@@ -1,0 +1,16 @@
+<world>
+    <sector x="0" y="0">
+        <terrainParts>
+            <part worldMaterial="dirt">
+                <vert x="" y="" z="" nx="" ny="" nz="" time=""/>
+            </part>
+            <part worldMaterial="rock">
+                <vert x="" y="" z="" nx="" ny="" nz=""/>
+            </part>
+            <part worldMaterial="ore">
+                <vert x="" y="" z="" nx="" ny="" nz=""/>
+            </part>
+        </terrainParts>
+    </sector>
+</world>
+#worldMaterial different types of stone, snow, ice, dirt ect.

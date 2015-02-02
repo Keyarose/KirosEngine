@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<game xmlns="http://kirosindustries.com/GameData.xsd">
+  <titles>
+    <title lang="en">test</title>
+  </titles>
+  <icon>icon.jpg</icon>
+  <copyright>Kiros Industries</copyright>
+  <paths>
+    <scenePath>Scenes</scenePath>
+    <scriptPath>Scripts</scriptPath>
+    <modelPath>Models</modelPath>
+    <texturePath>Textures</texturePath>
+    <shaderPath>Shaders</shaderPath>
+  </paths>
+</game>

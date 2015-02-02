@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SceneSchema"
+    targetNamespace="http://kirosindustries.com/Scene.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://kirosindustries.com/Scene.xsd"
+    xmlns:mstns="http://kirosindustries.com/Scene.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="scene" type="scenetype"/>
+  <xs:complexType name="scenetype">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="resources" type="resourcestype"/>
+      <xs:element name="objects" type="objectstype"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resourcestype">
+    <xs:sequence>
+      <xs:element name="shaders" type="shaderstype"/>
+      <xs:element name="textures" type="texturestype"/>
+      <xs:element name="materials" type="materialstype"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="objectstype">
+    <xs:sequence>
+      <xs:element name="models" type="modelstype"/>
+      <xs:element name="lights" type="lightstype"/>
+      <xs:element name="cameras" type="camerastype"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="shaderstype">
+    <xs:sequence>
+      <xs:element name="shader" type="shadertype" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="shadertype">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="vertFile" type="xs:string"/>
+      <xs:element name="vertMethod" type="xs:string"/>
+      <xs:element name="pixelFile" type="xs:string"/>
+      <xs:element name="pixelMethod" type="xs:string"/>
+      <xs:element name="shaderElements" type="shaderelementstype"/>
+      <xs:element name="shaderConstants" type="shaderconstantstype"/>
+      <xs:element name="samplerDiscription" type="samplerdiscriptiontype" minOccurs="0"/>
+      <xs:element name="bufferDescriptions" type="bufferdescriptionstype"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="shaderelementstype">
+    <xs:sequence>
+      <xs:element name="shaderElement" type="shaderelementtype" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="shaderelementtype">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="index" type="xs:int"/>
+      <xs:element name="format" type="xs:string"/>
+      <xs:element name="offset" type="xs:string"/>
+      <xs:element name="slot" type="xs:int"/>
+      <xs:element name="inputClass" type="xs:string"/>
+      <xs:element name="stepRate" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="shaderconstantstype">
+    <xs:sequence>
+      <xs:element name="matrixConstant" type="xs:boolean" maxOccurs="1"/>
+      <xs:element name="samplerConstant" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="lightConstant" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="cameraConstant" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="pixelConstant" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="samplerdiscriptiontype">
+    <xs:sequence>
+      <xs:element name="filter" type="xs:string"/>
+      <xs:element name="addressUMode" type="xs:string"/>
+      <xs:element name="addressVMode" type="xs:string"/>
+      <xs:element name="addressWMode" type="xs:string"/>
+      <xs:element name="lodBias" type="xs:float"/>
+      <xs:element name="maxAnisotropy" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="16"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="comparisonFunction" type="xs:string" minOccurs="0"/>
+      <xs:element name="borderColor" type="color4type"/>
+      <xs:element name="minLod" type="xs:float" minOccurs="0"/>
+      <xs:element name="maxLod" type="xs:float" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bufferdescriptionstype">
+    <xs:sequence>
+      <xs:element name="buffer" type="bufferdescriptiontype" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="bufferdescriptiontype">
+    <xs:sequence>
+      <xs:element name="resourceUsage" type="xs:string" minOccurs="0"/>
+      <xs:element name="sizeInBytes" type="xs:int" minOccurs="0"/>
+      <xs:element name="bindFlags" type="xs:string" minOccurs="0"/>
+      <xs:element name="cpuAccessFlags" type="xs:string" minOccurs="0"/>
+      <xs:element name="optionFlags" type="xs:string" minOccurs="0"/>
+      <xs:element name="byteStride" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="materialstype">
+    <xs:sequence>
+      <xs:element name="material" type="materialtype" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="materialtype">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="shader" type="xs:string"/>
+      <xs:element name="texture" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="texturestype">
+    <xs:sequence>
+      <xs:element name="texture" type="texturetype" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="texturetype">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="fileName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="modelstype">
+    <xs:sequence>
+      <xs:element name="model" type="modeltype" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="modeltype">
+    <xs:sequence>
+      <xs:sequence>
+        <xs:element name="fileName" type="xs:string"/>
+        <xs:element name="texture" type="xs:string"/>
+        <xs:element name="position" type="vector3type"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="lightstype">
+    <xs:sequence>
+      <xs:element name="light" type="lighttype" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="lighttype">
+    <xs:sequence>
+      <xs:element name="diffuseColor" type="color4type"/>
+      <xs:element name="ambientColor" type="color4type"/>
+      <xs:element name="direction" type="vector3type"/>
+      <xs:element name="specularColor" type="color4type"/>
+      <xs:element name="specularPower" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="camerastype">
+    <xs:sequence>
+      <xs:element name="camera" type="cameratype" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cameratype">
+    <xs:sequence>
+      <xs:element name="position" type="vector3type"/>
+      <xs:element name="lookAt" type="vector3type"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="color4type">
+    <xs:attribute name="r" type="xs:float"/>
+    <xs:attribute name="g" type="xs:float"/>
+    <xs:attribute name="b" type="xs:float"/>
+    <xs:attribute name="a" type="xs:float"/>
+  </xs:complexType>
+
+  <xs:complexType name="vector3type">
+    <xs:attribute name="x" type="xs:float"/>
+    <xs:attribute name="y" type="xs:float"/>
+    <xs:attribute name="z" type="xs:float"/>
+  </xs:complexType>
+</xs:schema>

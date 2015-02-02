@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<scenes xmlns="http://kirosindustries.com/SceneIndex.xsd">
+  <scene index="0">
+    <id>testdata_opening</id>
+    <name>Opening</name>
+  </scene>
+  <scene index="1">
+    <id>testdata_menu</id>
+    <name>Menu</name>
+  </scene>
+</scenes>

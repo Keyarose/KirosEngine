@@ -1,0 +1,23 @@
+<itemTypes>
+    <itemType>blade</itemType>
+    <itemType>containerSolid</itemType>
+    <itemType>containerLiquid</itemType>
+    <itemType>containerGas</itemType>
+    <itemType>case</itemType>
+    <itemType>stick</itemType>
+    <itemType>binding</itemType>
+    <itemType>pipe</itemType>
+</itemTypes>
+<materialTypes>
+    <materialType>stone</materialType>
+    <materialType>metal</materialType>
+    <materialType>wood</materialType>
+    <materialType>plastic</materialType>
+    <materialType>glass</materialType>
+    <materialType>rubber</materialType>
+    <materialType>lether</materialType>
+    <materialType>paper</materialType>
+    <materialType>cloth</materialType>
+    <materialType>ceramic</materialType>
+    <materialType>powder</materialType>
+<materialTypes>

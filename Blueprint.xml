@@ -1,0 +1,13 @@
+<blueprint>
+    <id>blueprintID</id>
+    <name>name</name>
+    <result>itemIDResult</result>
+    <components>
+        <component>
+            <itemType></itemType>
+            <materialType></materialType>
+            <position x="" y="" z=""/>
+            <rotation x="" y="" z=""/>
+        </component>
+    </components>
+</blueprint>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SceneIndex"
+    targetNamespace="http://kirosindustries.com/SceneIndex.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://kirosindustries.com/SceneIndex.xsd"
+    xmlns:mstns="http://kirosindustries.com/SceneIndex.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="scenes" type="scenestype"/>
+  <xs:complexType name="scenestype">
+    <xs:sequence>
+      <xs:element name="scene" type="scenetype" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="scenetype">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="name" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int"/>
+  </xs:complexType>
+</xs:schema>

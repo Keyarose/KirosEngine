@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GeneticCode"
+    targetNamespace="http://kirosindustries.com/GeneticCode.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://kirosindustries.com/GeneticCode.xsd"
+    xmlns:mstns="http://kirosindustries.com/GeneticCode.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="geneticCode" type="geneticCodetype"/>
+  <xs:complexType name="geneticCodetype">
+    <xs:sequence>
+      <xs:element name="generalActive" type="generaltype"/>
+      <xs:element name="headActive" type="headtype"/>
+      <xs:element name="appendagesActive" type="appendagetype"/>
+      <xs:element name="reproductionMethodActive" type="reproductionMethodtype"/>
+      <xs:element name="generalRecesive" type="generaltype"/>
+      <xs:element name="headRecesive" type="headtype"/>
+      <xs:element name="appendagesRecesive" type="appendagetype"/>
+      <xs:element name="reproductionMethodRecesive" type="reproductionMethodtype"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="generaltype">
+    <xs:sequence>
+      <xs:element name="height" type="xs:float"/>
+      <xs:element name="body" type="bodytype"/>
+      <xs:element name="skin" type="skintype"/>
+      <xs:element name="skinColor" type="color3type"/>
+      <xs:element name="hairColor" type="color3type"/>
+      <xs:element name="diet" type="diettype"/>
+      <xs:element name="respiration" type="respirationtype"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="bodytype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="skintype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Smooth"/>
+      <xs:enumeration value="Scaled"/>
+      <xs:enumeration value="Furred"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="diettype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="respirationtype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="headtype">
+    <xs:sequence>
+      <xs:element name="headShape" type="headShapetype"/>
+      <xs:element name="faceShape" type="faceShapetype"/>
+      <xs:element name="eyeCount" type="xs:int"/>
+      <xs:element name="eyeShape" type="eyeShapetype"/>
+      <xs:element name="eyetype" type="eyeTypetype"/>
+      <xs:element name="irisShape" type="irisShapetype"/>
+      <xs:element name="irisColors" type="irisColorstype"/>
+      <xs:element name="eyeColors" type="eyeColorstype"/>
+      <xs:element name="visionRange" type="visionRangetype"/>
+      <xs:element name="earCount" type="xs:int"/>
+      <xs:element name="earType" type="earTypetype"/>
+      <xs:element name="noseType" type="noseTypetype"/>
+      <xs:element name="mouthType" type="mouthTypetype"/>
+      <xs:element name="toothType" type="toothTypetype"/>
+      <xs:element name="hornType" type="hornTypetype"/>
+      <xs:element name="hornCount" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="headShapetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="faceShapetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="eyeShapetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="eyeTypetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="irisShapetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="irisColorstype">
+    <xs:sequence>
+      <xs:element name="irisColor" type="color3type" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="eyeColorstype">
+    <xs:sequence>
+      <xs:element name="eyeColor" type="color3type" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="visionRangetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="earTypetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="noseTypetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="mouthTypetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="toothTypetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="hornTypetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="appendagetype">
+    <xs:sequence>
+      <xs:element name="armCount" type="xs:int"/>
+      <xs:element name="fingerCount" type="xs:int"/>
+      <xs:element name="legCount" type="xs:int"/>
+      <xs:element name="footType" type="footTypetype"/>
+      <xs:element name="toeCount" type="xs:int"/>
+      <xs:element name="nailTypeFinger" type="nailTypetype"/>
+      <xs:element name="nailTypeToe" type="nailTypetype"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="footTypetype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="nailType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="nailTypetype">
+    <xs:list itemType="nailType"/>
+  </xs:simpleType>
+  
+  <xs:simpleType name="reproductionMethodtype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="color3type">
+    <xs:sequence>
+      <xs:element name="red" type="xs:float"/>
+      <xs:element name="green" type="xs:float"/>
+      <xs:element name="blue" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

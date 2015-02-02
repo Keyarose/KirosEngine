@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GameData"
+    targetNamespace="http://kirosindustries.com/GameData.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://kirosindustries.com/GameData.xsd"
+    xmlns:mstns="http://kirosindustries.com/GameData.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="game" type="gametype"/>
+  <xs:complexType name="gametype">
+    <xs:sequence>
+      <xs:element name="titles" type="titlestype"/>
+      <xs:element name="icon" type="xs:string"/>
+      <xs:element name="copyright" type="xs:string"/>
+      <xs:element name="paths" type="pathstype"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="titlestype">
+    <xs:sequence>
+      <xs:element name="title" type="titletype" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="titletype">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="pathstype">
+    <xs:sequence>
+      <xs:element name="scenePath" type="xs:string"/>
+      <xs:element name="scriptPath" type="xs:string"/>
+      <xs:element name="modelPath" type="xs:string"/>
+      <xs:element name="texturePath" type="xs:string"/>
+      <xs:element name="shaderPath" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>

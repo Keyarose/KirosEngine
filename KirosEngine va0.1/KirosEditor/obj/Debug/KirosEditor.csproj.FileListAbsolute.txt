@@ -1,0 +1,9 @@
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.exe.config
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.exe
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.pdb
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.csprojResolveAssemblyReference.cache
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.MainForm.resources
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.Properties.Resources.resources
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.csproj.GenerateResource.Cache
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.exe
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.pdb

@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DB389941-A0B8-4A49-BA27-E46058746061}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KirosEngine</RootNamespace>
+    <AssemblyName>KirosEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4" />
+    <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9" />
+    <Reference Include="System" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Camera\BaseCamera.cs" />
+    <Compile Include="Camera\SimpleCamera.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="EngineConsole\ClientConsole.cs" />
+    <Compile Include="D3DCore.cs" />
+    <Compile Include="EngineConsole\CpuMonitor.cs" />
+    <Compile Include="EngineConsole\FpsCounter.cs" />
+    <Compile Include="EngineConsole\RamMonitor.cs" />
+    <Compile Include="ErrorLogger.cs" />
+    <Compile Include="ExceptionAnalyser.cs" />
+    <Compile Include="Exception\IDInUseException.cs" />
+    <Compile Include="Exception\InvalidDataValueException.cs" />
+    <Compile Include="Exception\KirosException.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Input\InputCore.cs" />
+    <Compile Include="Input\KeyboardBindings.cs" />
+    <Compile Include="Input\KeyboardHandler.cs" />
+    <Compile Include="Light\BasicLight.cs" />
+    <Compile Include="Material\MaterialManager.cs" />
+    <Compile Include="Material\ObjectMaterial.cs" />
+    <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\FileModel.cs" />
+    <Compile Include="Model\LitTexturedModel.cs" />
+    <Compile Include="Model\TexturedModel.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Scene\Scene.cs" />
+    <Compile Include="Scene\SceneManager.cs" />
+    <Compile Include="ScreenText\Font.cs" />
+    <Compile Include="ScreenText\ScrollingTextBox.cs" />
+    <Compile Include="ScreenText\Text.cs" />
+    <Compile Include="ScreenText\TextBox.cs" />
+    <Compile Include="Shader\BaseShader.cs" />
+    <Compile Include="Shader\ShaderManager.cs" />
+    <Compile Include="Shader\ShaderStructs.cs" />
+    <Compile Include="Sound\BaseSound.cs" />
+    <Compile Include="Textures\Bitmap.cs" />
+    <Compile Include="Textures\Texture.cs" />
+    <Compile Include="Textures\TextureManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Fonts\arial16base_0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\arial32base_0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="testdata\data.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="testdata\Models\cubeTest.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="testdata\Scenes\index.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="testdata\Scenes\opening.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="testdata\Sound\town2.WAV">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="testdata\Textures\tanStone.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Visual Studio 2010\Projects\ILReader\ILReader.csproj">
+      <Project>{3B40E8C3-C4E8-4085-9F82-F64308F3791C}</Project>
+      <Name>ILReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KirosChemistry\KirosChemistry.csproj">
+      <Project>{3c717b0b-145b-4a10-b56d-11d3fdfd2a00}</Project>
+      <Name>KirosChemistry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KirosPhysics\KirosPhysics.csproj">
+      <Project>{28b90ff6-c46a-43eb-afe2-117b8dcb1032}</Project>
+      <Name>KirosPhysics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fonts\arial16base.fnt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Fonts\arial32base.fnt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Shaders\DX\font.ps">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Shaders\DX\font.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="testdata\Shaders\color.ps">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="testdata\Shaders\color.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="testdata\Shaders\font.ps">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="testdata\Shaders\font.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="testdata\Shaders\light.ps">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="testdata\Shaders\light.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="testdata\Shaders\texture.ps">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="testdata\Shaders\texture.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="XML\GameData.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XML\SceneIndex.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XML\Scene.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Shaders\GL\" />
+    <Folder Include="testdata\Scripts\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
