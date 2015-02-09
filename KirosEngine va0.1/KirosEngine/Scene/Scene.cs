@@ -335,7 +335,26 @@ namespace KirosEngine.Scene
             foreach(FileModel model in _models)
             {
                 model.Draw(context);
-                shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, model.GetTexture(), _lights[0], _defaultCamera.Position);
+                if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.LightBuffer | ShaderBufferFlags.CameraBuffer | ShaderBufferFlags.SamplerBuffer))
+                {
+                    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, model.GetTexture(), _lights[0], _defaultCamera.Position);
+                }
+                else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.SamplerBuffer | ShaderBufferFlags.PixelBuffer))
+                {
+                    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, model.GetTexture(), new Vector4());
+                }
+                else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.LightBuffer | ShaderBufferFlags.CameraBuffer))
+                {
+                    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, _lights[0], _defaultCamera.Position);
+                }
+                else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.SamplerBuffer))
+                {
+                    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, model.GetTexture());
+                }
+                else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer))
+                {
+                    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix);
+                }
             }
         }
     }

@@ -41,6 +41,7 @@ namespace KirosEngine.Shader
         Device _device;
         DeviceContext _context;
 
+        private ShaderBufferFlags _bufferFlags;
         private VertexShader _vertexShader;
         private PixelShader _pixelShader;
         private InputLayout _layout;
@@ -56,7 +57,16 @@ namespace KirosEngine.Shader
         private Buffer _pixelBuffer;
         private BufferDescription _pixelBufferDisc;
 
-        //private ShaderTypeFlags _shaderTypeFlag;
+        /// <summary>
+        /// Public accessor for the shader's buffer flags
+        /// </summary>
+        public ShaderBufferFlags ShaderBufferFlags
+        {
+            get
+            {
+                return _bufferFlags;
+            }
+        }
 
         #region XMLDictionaries
         public static Dictionary<string, Format> FormatDictionary = new Dictionary<string, Format> {
@@ -162,6 +172,7 @@ namespace KirosEngine.Shader
             _device = device;
             _context = context;
             _bufferDescriptions = new Dictionary<string, BufferDescription>();
+            _bufferFlags = bufferFlags;
             ShaderSignature inputSignature = null;
 
             try
