@@ -4,5 +4,6 @@ namespace KirosProject
     {
         private Vector2 _coordinates;
         
+        private List<TerrainPart> _terrainParts;
     }
 }
