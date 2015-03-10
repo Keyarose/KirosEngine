@@ -26,6 +26,22 @@ namespace KirosProject
             _partMaterial = material;
             _vertices = vertices.ToList();
         }
+        
+        public List<TPVertex>.Enumerator GetVertices()
+        {
+            return _vertices.GetEnumerator();
+        }
+        
+        public WorldMaterial GetWorldMaterial()
+        {
+            return _partMaterial;
+        }
+        
+        public bool ShiftVerts(float deltaTime, Vector3 cameraDirection, Vector3 cameraPosition)
+        {
+            //use camera position and direction to find the verts closest to where the player is looking
+            //then shift the verts by a dig factor along the direction vector
+        }
     }
     
     public enum WorldMaterial
