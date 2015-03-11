@@ -2,14 +2,15 @@ namespace KirosProject
 {
     public abstract class StructureComponent
     {
-        private Vector3 _bounding1;
-        private Vector3 _bounding2;
-        private Vector3 _translation;
-        private string _compID;
+        protected Vector3 _bounding1;
+        protected Vector3 _bounding2;
+        protected Vector3 _translation;
+        protected string _compID;
         
-        private ComponentType _type;
-        private float _durability;
-        private Vector3 _centerMass;
+        protected ComponentType _type;
+        protected float _durability;
+        protected Vector3 _centerMass;
+        protected bool _hidden;
         
         /// <summary>
         /// Public accessor for the component's id
@@ -64,6 +65,21 @@ namespace KirosProject
             set
             {
                 _type = value;
+            }
+        }
+        
+        /// <summary>
+        /// Public accessor for the component's hidden flag
+        /// </summary>
+        public bool IsHidden
+        {
+            get
+            {
+                return _hidden;
+            }
+            set
+            {
+                _hidden = value;
             }
         }
         

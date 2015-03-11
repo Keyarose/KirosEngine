@@ -2,15 +2,28 @@ using KirosEngine
 
 namespace KirosProject
 {
+    /// <summary>
+    /// A table which stores a value using two keys
+    /// </summary>
     public class Table<T1, T2, T3>
     {
         protected Dictionary<string, Dictionary<string, T3>> _dictionary;
         
-        public Dictionary<T1, T2, T3>()
+        /// <summary>
+        /// Basic constructor
+        /// </summary>
+        public Table<T1, T2, T3>()
         {
             _dictionary = new Dictionary<string, Dictionary<string, T3>>();
         }
         
+        /// <summary>
+        /// Add a value to the table
+        /// </summary>
+        /// <params name="key1">The first level key for the table</params>
+        /// <params name="key2">The second level key for the table</params>
+        /// <params name="val">The value to be added</params>
+        /// <returns>True if successful, false otherwise</returns>
         public bool Add(T1 key1, T2 key2, T3 val)
         {
             if(_dictionary.ContainsKey(key1.ToString()))
@@ -19,19 +32,28 @@ namespace KirosProject
                 {
                     //key already in use
                     ErrorLogger.Write(String.Format("Failed to add value: {0} to table: {1}. \n Key: {2} in use", val, this, key2));
+                    return false;
                 }
                 else
                 {
                     _dictionary[key1.ToString()].Add(key2.ToString(), val);
+                    return true;
                 }
             }
             else
             {
                 _dictionary.Add(key1.ToString(), new Dictionary<string, T3>());
                 _dictionary[key1.ToString()].Add(key2.ToString(), val);
+                return true;
             }
         }
         
+        /// <summary>
+        /// Get the value for the given keys
+        /// </summary>
+        /// <params name="key1">The first level key to use</params>
+        /// <params name="key2">The second level key to use</params>
+        /// <returns>The value for the given keys, or null if not found</returns>
         public T3 GetValue(T1 key1, T2 key2)
         {
             if(_dictionary.ContainsKey(key1.ToString()))
@@ -61,6 +83,7 @@ namespace KirosProject
         /// <param name="key1">The first level key to use</param>
         /// <param name="key2">The second level key to use</param>
         /// <param name="val"></param>
+        /// <returns>Returns true if successful, false otherwise</returns>
         public bool ChangeValue(T1 key1, T2 key2, T3 val)
         {
             if(_dictionary.ContainsKey(key1.ToString()))
