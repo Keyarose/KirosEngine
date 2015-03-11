@@ -35,6 +35,24 @@
           <samplerConstant>true</samplerConstant>
           <pixelConstant>true</pixelConstant>
         </shaderConstants>
+        <samplerDiscription>
+          <filter>MinMagMipLinear</filter>
+          <addressUMode>Wrap</addressUMode>
+          <addressVMode>Wrap</addressVMode>
+          <addressWMode>Wrap</addressWMode>
+          <lodBias>0.0</lodBias>
+          <borderColor r="0.0" g="0.0" b="0.0" a="0.0"/>
+        </samplerDiscription>
+        <bufferDescriptions>
+          <buffer name="matrix">
+            <resourceUsage>Dynamic</resourceUsage>
+            <sizeInBytes>192</sizeInBytes>
+          </buffer>
+          <buffer name="pixel">
+            <resourceUsage>Dynamic</resourceUsage>
+            <sizeInBytes>16</sizeInBytes>
+          </buffer>
+        </bufferDescriptions>
       </shader>
       <shader>
         <id>simpleLight</id>
@@ -78,13 +96,19 @@
           <cameraConstant>true</cameraConstant>
         </shaderConstants>
         <samplerDiscription>
-          <filter>minmagmiplinear</filter>
-          <addressUMode>wrap</addressUMode>
-          <addressVMode>wrap</addressVMode>
-          <addressWMode>wrap</addressWMode>
+          <filter>MinMagMipLinear</filter>
+          <addressUMode>Wrap</addressUMode>
+          <addressVMode>Wrap</addressVMode>
+          <addressWMode>Wrap</addressWMode>
           <lodBias>0.0</lodBias>
           <borderColor r="0.0" g="0.0" b="0.0" a="0.0"/>
         </samplerDiscription>
+        <bufferDescriptions>
+          <buffer name="matrix">
+            <resourceUsage>Dynamic</resourceUsage>
+            <sizeInBytes>192</sizeInBytes>
+          </buffer>
+        </bufferDescriptions>
       </shader>
     </shaders>
     <textures>
@@ -93,6 +117,13 @@
         <fileName>tanStone.gif</fileName>
       </texture>
     </textures>
+    <materials>
+      <material>
+        <name>litStone</name>
+        <shader>simpleLight</shader>
+        <texture>tanStone</texture>
+      </material>
+    </materials>
   </resources>
   <objects>
     <models>

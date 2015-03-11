@@ -102,12 +102,15 @@
     <Compile Include="Material\MaterialManager.cs" />
     <Compile Include="Material\ObjectMaterial.cs" />
     <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\Bounding.cs" />
     <Compile Include="Model\FileModel.cs" />
     <Compile Include="Model\LitTexturedModel.cs" />
+    <Compile Include="Model\SphereBounding.cs" />
     <Compile Include="Model\TexturedModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Scene\Scene.cs" />
     <Compile Include="Scene\SceneManager.cs" />
+    <Compile Include="Scene\SceneNode.cs" />
     <Compile Include="ScreenText\Font.cs" />
     <Compile Include="ScreenText\ScrollingTextBox.cs" />
     <Compile Include="ScreenText\Text.cs" />
