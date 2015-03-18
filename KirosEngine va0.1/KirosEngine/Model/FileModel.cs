@@ -37,7 +37,13 @@ namespace KirosEngine.Model
         private string _modelFileName;
         private ModelType[] _model;
 
-        public FileModel(Device device, string modelFileName, string textureFileName) : base(device)
+        /// <summary>
+        /// Constructor with texture from a file
+        /// </summary>
+        /// <param name="device">The device for the model</param>
+        /// <param name="modelFileName">The file name for the model</param>
+        /// <param name="textureFileName">The file name for the texture</param>
+        public FileModel(Device device, string modelFileName, string textureFileName) : base(device, new Vector3())
         {
             _vertexStride = Marshal.SizeOf(typeof(TexVertex));
             _modelFileName = modelFileName;
@@ -47,7 +53,13 @@ namespace KirosEngine.Model
             Init();
         }
 
-        public FileModel(Device device, string modelFileName, Texture texture) : base(device)
+        /// <summary>
+        /// Constructor with texture from an object
+        /// </summary>
+        /// <param name="device">The device for the model</param>
+        /// <param name="modelFileName">The file name for the model</param>
+        /// <param name="texture">The texture to use for the model</param>
+        public FileModel(Device device, string modelFileName, Texture texture) : base(device, new Vector3())
         {
             _vertexStride = Marshal.SizeOf(typeof(TexVertex));
             _modelFileName = modelFileName;
@@ -99,7 +111,7 @@ namespace KirosEngine.Model
         {
             string[] lines = File.ReadAllLines(fileName);
 
-            //get all metadata
+            //get all meta-data
             foreach (string line in lines)
             {
                 //get the vertex count
@@ -149,11 +161,18 @@ namespace KirosEngine.Model
             return true;
         }
 
+        /// <summary>
+        /// Getter for the model's texture
+        /// </summary>
+        /// <returns>Returns the shader resource view for the model's texture</returns>
         public ShaderResourceView GetTexture()
         {
             return _texture.GetTexture();
         }
 
+        /// <summary>
+        /// Clears the unmanaged objects attached to the model
+        /// </summary>
         public override void Dispose()
         {
             _model = null;

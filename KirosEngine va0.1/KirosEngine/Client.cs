@@ -43,7 +43,7 @@ namespace KirosEngine
         DeviceCollection _soundInputDevices;
 
         protected RenderForm _clientForm;
-        protected string _languageLocal = "en"; //defaults to en(english)
+        protected string _languageLocal = "en"; //defaults to en(English)
         protected string _defaultGamesDirectory = "games";
         protected bool _libraryMode;
         protected string _gameTitle;
@@ -77,7 +77,7 @@ namespace KirosEngine
         }
 
         /// <summary>
-        /// Pregame initialization
+        /// Pre-game initialization
         /// </summary>
         /// <returns>Returns true if the initialization is successful</returns>
         public bool Initialize()
@@ -114,7 +114,7 @@ namespace KirosEngine
             _defaultCamera.SetPosition(new Vector3(0.0f, 0.0f, -10.0f));
             _defaultCamera.Draw();
 
-            //init the consolee
+            //init the console
             _clientConsole = new ClientConsole(_device, _defaultFont, _clientForm.Height, _clientForm.Width, _keyHandler);
             return result;
         }
@@ -124,7 +124,7 @@ namespace KirosEngine
         /// <summary>
         /// Begin loading the client in library mode, rather than a specific game
         /// </summary>
-        /// <returns>Returns true if it is able to load successfuly</returns>
+        /// <returns>Returns true if it is able to load successfully</returns>
         public bool Load()
         {
             _libraryMode = true;
@@ -173,7 +173,7 @@ namespace KirosEngine
         /// </summary>
         /// <param name="filePath">The file path to the game data</param>
         /// <exception cref="FileNotFoundException">Thrown when the provided file cannot be found</exception>
-        /// <returns>Returns true if it is able to load successfuly</returns>
+        /// <returns>Returns true if it is able to load successfully</returns>
         public bool Load(string filePath)
         {
             _libraryMode = false;
@@ -300,7 +300,7 @@ namespace KirosEngine
             MessagePump.Run(_clientForm, () =>
                 {
                     //global timer tick here?
-                    //clear backround first
+                    //clear background first
                     this.Update();
                     this.Draw();
                 });

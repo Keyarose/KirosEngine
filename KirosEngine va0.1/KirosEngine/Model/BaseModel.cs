@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using SlimDX;
 using SlimDX.Direct3D11;
 using SlimDX.DXGI;
+using KirosEngine.Scene;
 using KirosEngine.Material;
 
 using Device = SlimDX.Direct3D11.Device;
@@ -14,10 +15,10 @@ using Buffer = SlimDX.Direct3D11.Buffer;
 
 namespace KirosEngine.Model
 {
-    abstract class BaseModel
+    abstract class BaseModel : SceneNode
     {
         [StructLayout(LayoutKind.Sequential)]
-        struct Vertex
+        struct ColorVertex
         {
             public Vector3 Position;
             public Color4 Color;
@@ -37,20 +38,14 @@ namespace KirosEngine.Model
         protected int _vertexCount;
         protected int _indexCount;
 
-        protected Vector3 _position;
-
         /// <summary>
-        /// Public accessor for the model's position
+        /// Public accessor for the model's vertex count
         /// </summary>
-        public Vector3 Position
+        public int VertexCount
         {
             get
             {
-                return _position;
-            }
-            set
-            {
-                _position = value;
+                return _vertexCount;
             }
         }
 
@@ -80,7 +75,12 @@ namespace KirosEngine.Model
             }
         }
 
-        public BaseModel(Device device)
+        /// <summary>
+        /// Basic constructor
+        /// </summary>
+        /// <param name="device">The graphics device</param>
+        /// <param name="position">The position of the model</param>
+        public BaseModel(Device device, Vector3 position) : base("default", position)
         {
             _device = device;
         }

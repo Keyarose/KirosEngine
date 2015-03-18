@@ -7,6 +7,9 @@ using KirosEngine.Model;
 
 namespace KirosEngine.Scene
 {
+    /// <summary>
+    /// Top level abstract class for objects within a scene
+    /// </summary>
     abstract class SceneNode
     {
         protected string _nodeID;
@@ -77,7 +80,19 @@ namespace KirosEngine.Scene
         }
         #endregion
 
+        #region Setters
+        public void SetPosition(Vector3 position)
+        {
+            this._position = position;
+        }
+        #endregion
+
         #region Constructors
+        /// <summary>
+        /// Basic constructor
+        /// </summary>
+        /// <param name="id">Node identifier string</param>
+        /// <param name="position">The position the node is at</param>
         public SceneNode(string id, Vector3 position)
         {
             _nodeID = id;
@@ -87,6 +102,12 @@ namespace KirosEngine.Scene
             _children = new List<SceneNode>();
         }
 
+        /// <summary>
+        /// Basic constructor with a parent node
+        /// </summary>
+        /// <param name="id">Node identifier string</param>
+        /// <param name="position">The position the node is at</param>
+        /// <param name="parent">The parent node</param>
         public SceneNode(string id, Vector3 position, SceneNode parent)
         {
             _nodeID = id;
@@ -97,6 +118,13 @@ namespace KirosEngine.Scene
             _children = new List<SceneNode>();
         }
 
+        /// <summary>
+        /// Basic constructor with a parent and children nodes
+        /// </summary>
+        /// <param name="id">Node identifier string</param>
+        /// <param name="position">The position the node is at</param>
+        /// <param name="parent">The parent node</param>
+        /// <param name="children">The child nodes</param>
         public SceneNode(string id, Vector3 position, SceneNode parent, params SceneNode[] children)
         {
             _nodeID = id;
@@ -107,6 +135,13 @@ namespace KirosEngine.Scene
             _children = new List<SceneNode>(children);
         }
 
+        /// <summary>
+        /// Constructor with all transforms
+        /// </summary>
+        /// <param name="id">Node identifier string</param>
+        /// <param name="position">The position the node is at</param>
+        /// <param name="scale">The scale of the node</param>
+        /// <param name="rotation">The rotation of the node</param>
         public SceneNode(string id, Vector3 position, Vector3 scale, Vector3 rotation)
         {
             _nodeID = id;
@@ -116,6 +151,14 @@ namespace KirosEngine.Scene
             _children = new List<SceneNode>();
         }
 
+        /// <summary>
+        /// Constructor with all transforms and a parent node
+        /// </summary>
+        /// <param name="id">Node identifier string</param>
+        /// <param name="position">The position the node is at</param>
+        /// <param name="scale">The scale of the node</param>
+        /// <param name="rotation">The rotation of the node</param>
+        /// <param name="parent">The parent node</param>
         public SceneNode(string id, Vector3 position, Vector3 scale, Vector3 rotation, SceneNode parent)
         {
             _nodeID = id;
@@ -126,6 +169,15 @@ namespace KirosEngine.Scene
             _children = new List<SceneNode>();
         }
 
+        /// <summary>
+        /// Constructor with all transforms, a parent node, and child nodes
+        /// </summary>
+        /// <param name="id">Node identifier string</param>
+        /// <param name="position">The position the node is at</param>
+        /// <param name="scale">The scale of the node</param>
+        /// <param name="rotation">The rotation of the node</param>
+        /// <param name="parent">The parent node</param>
+        /// <param name="children">The child nodes</param>
         public SceneNode(string id, Vector3 position, Vector3 scale, Vector3 rotation, SceneNode parent, params SceneNode[] children)
         {
             _nodeID = id;

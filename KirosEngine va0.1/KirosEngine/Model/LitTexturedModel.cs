@@ -27,7 +27,7 @@ namespace KirosEngine.Model
 
         private Texture _texture;
 
-        public LitTexturedModel(Device device, string fileName) : base(device)
+        public LitTexturedModel(Device device, string fileName) : base(device, new Vector3())
         {
             _vertexStride = Marshal.SizeOf(typeof(TexNormVertex));
             this.LoadTexture(fileName);

@@ -26,7 +26,7 @@ namespace KirosEngine.Model
 
         protected Texture _texture;
 
-        public TexturedModel(Device device, string fileName) : base(device)
+        public TexturedModel(Device device, string fileName) : base(device, new Vector3())
         {
             _vertexStride = Marshal.SizeOf(typeof(TexVertex));
 

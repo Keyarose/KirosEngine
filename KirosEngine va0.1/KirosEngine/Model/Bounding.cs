@@ -28,17 +28,22 @@ namespace KirosEngine.Model
             }
         }
 
+        /// <summary>
+        /// Basic constructor
+        /// </summary>
+        /// <param name="position">The position the bounding is at</param>
         public Bounding(Vector3 position)
         {
             _position = position;
         }
 
-        public abstract bool InsideBounds();
+        public abstract bool InsideBounds(Vector3 point);
+        //TODO: Remove CalculateVerts to abstract subclass for complex bounding?
         protected abstract void CalculateVerts();
     }
 
     struct BoundsVertex
     {
-        float x,y;
+        float x,y,z;
     }
 }

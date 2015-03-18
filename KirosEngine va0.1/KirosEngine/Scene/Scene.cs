@@ -21,6 +21,7 @@ namespace KirosEngine.Scene
 {
     public class Scene
     {
+        //TODO: scene documentation
         public static XNamespace SceneNS = "http://kirosindustries.com/Scene.xsd";
 
         private Device _device;
@@ -30,7 +31,7 @@ namespace KirosEngine.Scene
         private string _sceneName;
         private int _sceneIndex;
         //change List type, rename?
-        private List<BaseModel> _models;
+        private List<SceneNode> _nodes;
         private List<BasicLight> _lights;
         private List<BaseCamera> _cameras;
         private BaseCamera _defaultCamera;
@@ -38,7 +39,9 @@ namespace KirosEngine.Scene
         private List<object> _soundEmitters;
         private List<object> _particleEmitters;
 
-        //public access to read the scene's id
+        /// <summary>
+        /// Public accessor for the scene's id
+        /// </summary>
         public string SceneID
         {
             get
@@ -47,6 +50,9 @@ namespace KirosEngine.Scene
             }
         }
         
+        /// <summary>
+        /// Public accessor for the scene's name
+        /// </summary>
         public string SceneName
         {
             get
@@ -55,6 +61,9 @@ namespace KirosEngine.Scene
             }
         }
 
+        /// <summary>
+        /// Public accessor for the scene's index
+        /// </summary>
         public int SceneIndex
         {
             get
@@ -81,24 +90,24 @@ namespace KirosEngine.Scene
             _sceneIndex = index;
 
             _lights = new List<BasicLight>();
-            _models = new List<BaseModel>();
+            _nodes = new List<SceneNode>();
         }
 
-        //load the scene from the given xml file name
+        //load the scene from the given XML file name
         public Scene(string xmlFile)
         {
             _lights = new List<BasicLight>();
-            _models = new List<BaseModel>();
+            _nodes = new List<SceneNode>();
 
             XDocument xmlDoc = XDocument.Load(xmlFile);
             ProcessXml(xmlDoc);
         }
 
-        //load the scene from the given xml document
+        //load the scene from the given XML document
         public Scene(XDocument xml)
         {
             _lights = new List<BasicLight>();
-            _models = new List<BaseModel>();
+            _nodes = new List<SceneNode>();
 
             ProcessXml(xml);
         }
@@ -121,7 +130,7 @@ namespace KirosEngine.Scene
             return result;
         }
 
-        //process the xml and load the data into the proper variables
+        //process the XML and load the data into the proper variables
         private bool ProcessXml(XDocument xml)
         {
             XElement scene = xml.Root;
@@ -177,8 +186,8 @@ namespace KirosEngine.Scene
             XElement position = model.Element(SceneNS + "position");
 
             FileModel newModel = new FileModel(_device, _modelPath +"/"+ modelFile, TextureManager.Instance.GetTexture(textureID));
-            newModel.Position = new Vector3(float.Parse(position.Attribute("x").Value), float.Parse(position.Attribute("y").Value), float.Parse(position.Attribute("z").Value));
-            _models.Add(newModel);
+            newModel.SetPosition(new Vector3(float.Parse(position.Attribute("x").Value), float.Parse(position.Attribute("y").Value), float.Parse(position.Attribute("z").Value)));
+            _nodes.Add(newModel);
         }
 
         private void LoadLight(XElement light)
@@ -228,7 +237,7 @@ namespace KirosEngine.Scene
             string pixelFile = ShaderManager.Instance.ShaderPath + "/" + xml.Element(SceneNS + "pixelFile").Value;
             string pixelMethod = xml.Element(SceneNS + "pixelMethod").Value;
 
-            //get the shaders data elements
+            //get the shader's data elements
             List<XElement> shaderElements = xml.Element(SceneNS + "shaderElements").Elements(SceneNS + "shaderElement").ToList();
 
             InputElement[] shaderInputElements = new InputElement[shaderElements.Count];
@@ -332,7 +341,7 @@ namespace KirosEngine.Scene
         public void Draw(DeviceContext context, Matrix viewMatrix, Matrix worldMatrix, Matrix projectionMatrix)
         {
             BaseShader shader = ShaderManager.Instance.GetShaderForKey("simpleLight");
-            foreach(FileModel model in _models)
+            foreach(FileModel model in _nodes)
             {
                 model.Draw(context);
                 if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.LightBuffer | ShaderBufferFlags.CameraBuffer | ShaderBufferFlags.SamplerBuffer))
