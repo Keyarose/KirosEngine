@@ -2,3 +2,4 @@ C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosPhy
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosPhysics\bin\Debug\KirosPhysics.pdb
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosPhysics\obj\Debug\KirosPhysics.dll
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosPhysics\obj\Debug\KirosPhysics.pdb
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosPhysics\obj\Debug\KirosPhysics.csprojResolveAssemblyReference.cache
