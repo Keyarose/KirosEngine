@@ -210,7 +210,7 @@ namespace KirosEngine
             }
             _loadedScene = SceneManager.Instance.LoadScene(0);
             
-            //Exception Debuging
+            //Exception Debugging
             //foreach (Type t in ExceptionAnalyser.GetAllExceptions(typeof(BaseSound).GetMethod("LoadWaveFile")))
             //{
             //    Console.WriteLine(t);
@@ -222,7 +222,7 @@ namespace KirosEngine
         /// <summary>
         /// Load the information from the data file
         /// </summary>
-        /// <param name="xml">The xml file to load from</param>
+        /// <param name="xml">The XML file to load from</param>
         protected void ProcessGameData(XDocument xml)
         {
             //Game title loading

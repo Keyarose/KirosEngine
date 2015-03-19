@@ -16,5 +16,11 @@ namespace KirosEditor
         {
             InitializeComponent();
         }
+
+        private void solarSystemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SolarSystemForm _solarForm = new SolarSystemForm();
+            _solarForm.Show();
+        }
     }
 }
