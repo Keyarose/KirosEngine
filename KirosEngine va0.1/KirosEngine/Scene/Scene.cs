@@ -202,7 +202,7 @@ namespace KirosEngine.Scene
             Color4 specular = new Color4(float.Parse(diffuseColor.Attribute("r").Value), float.Parse(diffuseColor.Attribute("g").Value), float.Parse(diffuseColor.Attribute("b").Value), float.Parse(diffuseColor.Attribute("a").Value));
             Vector3 direct = new Vector3(float.Parse(direction.Attribute("x").Value), float.Parse(direction.Attribute("y").Value), float.Parse(direction.Attribute("z").Value));
 
-            BasicLight newLight = new BasicLight(diffuse, ambient, direct, specular, float.Parse(light.Element(SceneNS + "specularPower").Value));
+            BasicLight newLight = new BasicLight("", new Vector3(), diffuse, ambient, direct, specular, float.Parse(light.Element(SceneNS + "specularPower").Value));
             _lights.Add(newLight);
         }
 

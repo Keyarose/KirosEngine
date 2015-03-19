@@ -7,13 +7,14 @@ using SlimDX;
 using SlimDX.DXGI;
 using SlimDX.Direct3D11;
 using SlimDX.D3DCompiler;
+using KirosEngine.Scene;
 
 namespace KirosEngine.Light
 {
     /// <summary>
     /// Base class for all light objects
     /// </summary>
-    class BasicLight
+    class BasicLight : SceneNode
     {
         private Color4 _ambientColor;
         private Color4 _diffuseColor;
@@ -30,7 +31,7 @@ namespace KirosEngine.Light
         /// <param name="diffuseColor">the diffuse color</param>
         /// <param name="ambientColor">the ambient color</param>
         /// <param name="direction">the direction</param>
-        public BasicLight(Color4 diffuseColor, Color4 ambientColor, Vector3 direction)
+        public BasicLight(string id, Vector3 position, Color4 diffuseColor, Color4 ambientColor, Vector3 direction) : base(id, position)
         {
             _diffuseColor = diffuseColor;
             _ambientColor = ambientColor;
@@ -44,7 +45,7 @@ namespace KirosEngine.Light
         /// </summary>
         /// <param name="diffuseColor">diffuse color</param>
         /// <param name="direction">direction</param>
-        public BasicLight(Color4 diffuseColor, Vector3 direction)
+        public BasicLight(string id, Vector3 position, Color4 diffuseColor, Vector3 direction) : base(id, position)
         {
             _diffuseColor = diffuseColor;
             _direction = direction;
@@ -61,7 +62,7 @@ namespace KirosEngine.Light
         /// <param name="direction">direction</param>
         /// <param name="specularColor">specular color</param>
         /// <param name="specularPower">specular power</param>
-        public BasicLight(Color4 diffuseColor, Color4 ambientColor, Vector3 direction, Color4 specularColor, float specularPower)
+        public BasicLight(string id, Vector3 position, Color4 diffuseColor, Color4 ambientColor, Vector3 direction, Color4 specularColor, float specularPower) : base(id, position)
         {
             _diffuseColor = diffuseColor;
             _ambientColor = ambientColor;
@@ -130,7 +131,7 @@ namespace KirosEngine.Light
         /// <summary>
         /// Set the light as using ambient or not
         /// </summary>
-        /// <param name="ambientLight">wether the light is now ambient or not</param>
+        /// <param name="ambientLight">whether the light is now ambient or not</param>
         public void SetAmbientLight(bool ambientLight)
         {
             _ambientLight = ambientLight;
