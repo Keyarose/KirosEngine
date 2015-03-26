@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
@@ -14,52 +12,50 @@ using KirosEngine;
 
 namespace KirosEditor
 {
-    public partial class SolarSystemForm : Form
+    class DirectXPanel
     {
-        D3DCore _core;
-        Device _device;
-        DeviceContext _context;
+        protected D3DCore _core;
+        protected Device _device;
+        protected DeviceContext _context;
 
-        public SolarSystemForm()
+        public DirectXPanel(IntPtr handel, int width, int height, Form parent)
         {
-            InitializeComponent();
             Application.Idle += Run;
+            parent.FormClosing += Unload;
+
             _core = new D3DCore();
-
-            this.Init();
-        }
-
-        private bool Init()
-        {
-            _core.Initialize(splitContainer2.Panel2.Handle, splitContainer2.Panel2.Width, splitContainer2.Panel2.Height, false, 0.1f, 1000.0f);
+            _core.Initialize(handel, width, height, false, 0.1f, 1000.0f);
             _device = _core.GetDevice();
             _context = _device.ImmediateContext;
-
-            return true;
         }
 
-        void Run(object sender, EventArgs e)
+        public virtual void Run(object sender, EventArgs e)
         {
             while(IsApplicationIdle())
             {
-                this.UpdateSolarView();
+                this.Update();
                 this.Draw();
             }
         }
 
-        public void UpdateSolarView()
+        public virtual void Update()
         {
 
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
             _core.BeginScene(new Color4(0.5f, 0.5f, 1.0f));
 
             _core.EndScene();
         }
 
-        //TODO: Unload
+        public virtual void Unload(object sender, FormClosingEventArgs e)
+        {
+            Application.Idle -= Run;
+            ((Form)sender).FormClosing -= Unload;
+            _core.Dispose();
+        }
 
         //message run stuff
         [StructLayout(LayoutKind.Sequential)]

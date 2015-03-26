@@ -1,12 +1,3 @@
-C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.exe.config
-C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.exe
-C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.pdb
-C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.csprojResolveAssemblyReference.cache
-C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.MainForm.resources
-C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.Properties.Resources.resources
-C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.csproj.GenerateResource.Cache
-C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.exe
-C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.pdb
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\Resources\Fonts\arial16base_0.png
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\Resources\Fonts\arial32base_0.png
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Models\cubeTest.txt
@@ -27,6 +18,9 @@ C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEdi
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\data.xml
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Scenes\index.xml
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Scenes\opening.xml
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.exe.config
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.exe
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.pdb
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEngine.exe
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\SlimDX.dll
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\ClrTest.Reflection.ILReader.dll
@@ -34,4 +28,11 @@ C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEdi
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\SlimDX.pdb
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\SlimDX.xml
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\ClrTest.Reflection.ILReader.pdb
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.csprojResolveAssemblyReference.cache
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.MainForm.resources
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.Properties.Resources.resources
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.SolarSystemForm.resources
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.csproj.GenerateResource.Cache
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.exe
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.pdb
+C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\preferences.xml
