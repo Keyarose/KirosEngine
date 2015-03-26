@@ -180,13 +180,13 @@ namespace KirosEngine.Shader
                 using(var bytecode = ShaderBytecode.CompileFromFile(vertexShaderFile, vertexMethod, "vs_4_0", ShaderFlags.None, EffectFlags.None))
                 {
                     inputSignature = ShaderSignature.GetInputSignature(bytecode);
-                    _vertexShader = new VertexShader(device, bytecode);
+                    _vertexShader = new VertexShader(_device, bytecode);
                     bytecode.Dispose();
                 }
 
                 using(var bytecode = ShaderBytecode.CompileFromFile(pixelShaderFile, pixelMethod, "ps_4_0", ShaderFlags.None, EffectFlags.None))
                 {
-                    _pixelShader = new PixelShader(device, bytecode);
+                    _pixelShader = new PixelShader(_device, bytecode);
                     bytecode.Dispose();
                 }
             }
@@ -236,7 +236,7 @@ namespace KirosEngine.Shader
                     MaximumLod = float.MaxValue
                 };
 
-                _sampleState = SamplerState.FromDescription(device, _sampleDisc);
+                _sampleState = SamplerState.FromDescription(_device, _sampleDisc);
             }
 
             //if the shader uses light
@@ -320,7 +320,7 @@ namespace KirosEngine.Shader
         }
 
         /// <summary>
-        /// Set the shader's sampler discription for sampling textures
+        /// Set the shader's sampler description for sampling textures
         /// </summary>
         /// <param name="discript">The description for the sampler</param>
         /// <returns>true if successful</returns>
@@ -334,7 +334,7 @@ namespace KirosEngine.Shader
         }
 
         /// <summary>
-        /// Set the shader's sampler discription for sampling textures
+        /// Set the shader's sampler description for sampling textures
         /// </summary>
         /// <param name="filter">The filtering method to use</param>
         /// <param name="addressU">method to use for resolving a texture coordinate outside 0 to 1</param>
@@ -342,7 +342,7 @@ namespace KirosEngine.Shader
         /// <param name="addressW">method to use for resolving a texture coordinate outside 0 to 1</param>
         /// <param name="lodBias">offset from the calculated mip level</param>
         /// <param name="maxAnisotropy">clamp value for anisotropic filtering</param>
-        /// <param name="compairFunction">fucntion to compare the sampled data</param>
+        /// <param name="compairFunction">function to compare the sampled data</param>
         /// <param name="border">color to use if using border addressing</param>
         /// <param name="minLod">lowest end of the mipmap range to clamp access to</param>
         /// <param name="maxLod">highest end of the mipmap range to clamp access to</param>
@@ -372,8 +372,8 @@ namespace KirosEngine.Shader
         /// <summary>
         /// Set the constant buffer with a matrix
         /// </summary>
-        /// <param name="vertexShader">If true the constant is ment for the vertex shader, if false it is ment for the pixel shader</param>
-        /// <param name="bufferID">The id for the buffer discription used</param>
+        /// <param name="vertexShader">If true the constant is meant for the vertex shader, if false it is meant for the pixel shader</param>
+        /// <param name="bufferID">The id for the buffer description used</param>
         /// <param name="slot">The constant's order in the shader</param>
         /// <param name="matrix">The matrix to put into the buffer</param>
         /// <returns>True if successful, false if it fails</returns>
@@ -415,8 +415,8 @@ namespace KirosEngine.Shader
         /// <summary>
         /// Set the constant buffer with a vector3
         /// </summary>
-        /// <param name="vertexShader">If true the constant is ment for the vertex shader, if false it is ment for the pixel shader</param>
-        /// <param name="bufferDescr">The discription used to create the buffer</param>
+        /// <param name="vertexShader">If true the constant is meant for the vertex shader, if false it is meant for the pixel shader</param>
+        /// <param name="bufferDescr">The description used to create the buffer</param>
         /// <param name="slot">The constant's order in the shader</param>
         /// <param name="vec3">The vector3 to put into the buffer</param>
         /// <returns>True if successful, false if it fails</returns>
@@ -458,8 +458,8 @@ namespace KirosEngine.Shader
         /// <summary>
         /// Set the constant buffer with a float
         /// </summary>
-        /// <param name="vertexShader">If true the constant is ment for the vertex shader, if false it is ment for the pixel shader</param>
-        /// <param name="bufferDescr">The discription used to create the buffer</param>
+        /// <param name="vertexShader">If true the constant is meant for the vertex shader, if false it is meant for the pixel shader</param>
+        /// <param name="bufferDescr">The description used to create the buffer</param>
         /// <param name="slot">The constant's order in the shader</param>
         /// <param name="valF">The float to put into the buffer</param>
         /// <returns>True if successful, false if it fails</returns>
@@ -499,10 +499,10 @@ namespace KirosEngine.Shader
         }
 
         /// <summary>
-        /// Set the constant buffer with a set of matrixes
+        /// Set the constant buffer with a set of matrices
         /// </summary>
-        /// <param name="vertexShader">If true the constant is ment for the vertex shader, if false it is ment for the pixel shader</param>
-        /// <param name="bufferDescr">The discription used to create the buffer</param>
+        /// <param name="vertexShader">If true the constant is meant for the vertex shader, if false it is meant for the pixel shader</param>
+        /// <param name="bufferDescr">The description used to create the buffer</param>
         /// <param name="slot">The constant's order in the shader</param>
         /// <param name="matrixBufferType">The buffers to put into the buffer</param>
         /// <returns>True if successful, false if ti fails</returns>
@@ -544,8 +544,8 @@ namespace KirosEngine.Shader
         /// <summary>
         /// Set the constant buffer with a set of values for a light
         /// </summary>
-        /// <param name="vertexShader">If true the constant is ment for the vertex shader, if false it is ment for the pixel shader</param>
-        /// <param name="bufferDescr">The discription used to create the buffer</param>
+        /// <param name="vertexShader">If true the constant is meant for the vertex shader, if false it is meant for the pixel shader</param>
+        /// <param name="bufferDescr">The description used to create the buffer</param>
         /// <param name="slot">The constant's order in the shader</param>
         /// <param name="lightBufferType">The light values to put into the buffer</param>
         public bool SetConstant(bool vertexShader, string bufferID, int slot, LightBufferType lightBufferType)
@@ -585,7 +585,7 @@ namespace KirosEngine.Shader
         /// <summary>
         /// Set a shader resource 
         /// </summary>
-        /// <param name="vertexShader">If true the resource is ment for the vertex shader, if false it is ment for the pixel shader</param>
+        /// <param name="vertexShader">If true the resource is meant for the vertex shader, if false it is meant for the pixel shader</param>
         /// <param name="slot">The resource's order in the shader</param>
         /// <param name="resourceView">The resource view to use</param>
         public void SetShaderResource(bool vertexShader, int slot, ShaderResourceView resourceView)
@@ -601,10 +601,10 @@ namespace KirosEngine.Shader
         }
 
         /// <summary>
-        /// Set the paramiters of the shader for drawing
+        /// Set the parameters of the shader for drawing
         /// </summary>
         /// <param name="context">device context</param>
-        /// <param name="world">world matirx</param>
+        /// <param name="world">world matrix</param>
         /// <param name="projection">projection matrix</param>
         /// <param name="view">view matrix</param>
         private void SetParamiters(DeviceContext context, Matrix world, Matrix projection, Matrix view)
@@ -636,7 +636,7 @@ namespace KirosEngine.Shader
         }
 
         /// <summary>
-        /// set the paramiters of the shader for drawing with a light
+        /// set the parameters of the shader for drawing with a light
         /// </summary>
         /// <param name="context">device context</param>
         /// <param name="world">world matrix</param>
@@ -715,7 +715,7 @@ namespace KirosEngine.Shader
         }
 
         /// <summary>
-        /// set the paramiters of the shader for drawing with texture
+        /// set the parameters of the shader for drawing with texture
         /// </summary>
         /// <param name="context">device context</param>
         /// <param name="world">world matrix</param>
@@ -752,7 +752,7 @@ namespace KirosEngine.Shader
         }
 
         /// <summary>
-        /// Set the shader paramiters for drawing with texture and color (used in text rendering)
+        /// Set the shader parameters for drawing with texture and color (used in text rendering)
         /// </summary>
         /// <param name="context">device context</param>
         /// <param name="world">world matrix</param>
@@ -808,7 +808,7 @@ namespace KirosEngine.Shader
         }
 
         /// <summary>
-        /// Set the paramiters of the shader for drawing with light data and texture
+        /// Set the parameters of the shader for drawing with light data and texture
         /// </summary>
         /// <param name="context">device context</param>
         /// <param name="world">world matrix</param>

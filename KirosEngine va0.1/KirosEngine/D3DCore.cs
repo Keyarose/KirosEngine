@@ -85,9 +85,9 @@ namespace KirosEngine
         }
 
         /// <summary>
-        /// Accessor for the current orthographic matirx
+        /// Accessor for the current orthographic matrix
         /// </summary>
-        /// <returns>The Matrix containing the Othographic values</returns>
+        /// <returns>The Matrix containing the Orthographic values</returns>
         public Matrix GetOrthoMatrix()
         {
             return _orthoMatrix;
@@ -171,7 +171,7 @@ namespace KirosEngine
                 _renderTarget = new RenderTargetView(_device, resource);
             }
 
-            //buffer discription for the back buffer
+            //buffer description for the back buffer
             var depthDisc = new Texture2DDescription()
             {
                 Height = screenHeight,
@@ -230,7 +230,7 @@ namespace KirosEngine
             _depthStencilView = new DepthStencilView(_device, _depthStencilBuffer, depthStencilViewDisc);
             _context.OutputMerger.SetTargets(_depthStencilView, _renderTarget);
 
-            //discription for the rasterizer
+            //description for the rasterizer
             var rasterDisc = new RasterizerStateDescription()
             {
                 IsAntialiasedLineEnabled = false,
@@ -397,7 +397,7 @@ namespace KirosEngine
                 _renderTarget = new RenderTargetView(_device, resource);
             }
 
-            //buffer discription for the back buffer
+            //buffer description for the back buffer
             var depthDisc = new Texture2DDescription()
             {
                 Height = screenHeight,
@@ -456,7 +456,7 @@ namespace KirosEngine
             _depthStencilView = new DepthStencilView(_device, _depthStencilBuffer, depthStencilViewDisc);
             _context.OutputMerger.SetTargets(_depthStencilView, _renderTarget);
 
-            //discription for the rasterizer
+            //description for the rasterizer
             var rasterDisc = new RasterizerStateDescription()
             {
                 IsAntialiasedLineEnabled = false,
@@ -574,7 +574,7 @@ namespace KirosEngine
         }
 
         /// <summary>
-        /// Disable aplha blending for this device.
+        /// Disable alpha blending for this device.
         /// </summary>
         public void TurnOffAlphaBlending()
         {
@@ -584,6 +584,62 @@ namespace KirosEngine
             _context.OutputMerger.BlendState = _alphaDisabledBlendState;
         }
 
+        public void Resize(int width, int height)
+        {
+            if(_renderTarget != null) _renderTarget.Dispose();
+            if(_depthStencilBuffer != null) _depthStencilBuffer.Dispose();
+            if (_depthStencilView != null) _depthStencilView.Dispose();
+            _swapChain.ResizeBuffers(_swapChain.Description.BufferCount, width, height, _swapChain.Description.ModeDescription.Format, _swapChain.Description.Flags);
+
+            using (var resource = Resource.FromSwapChain<Texture2D>(_swapChain, 0))
+            {
+                _renderTarget = new RenderTargetView(_device, resource);
+            }
+
+            //buffer description for the back buffer
+            var depthDisc = new Texture2DDescription()
+            {
+                Height = height,
+                Width = width,
+                MipLevels = 1,
+                ArraySize = 1,
+                Format = Format.D24_UNorm_S8_UInt,
+                SampleDescription = new SampleDescription(1, 0),
+                Usage = ResourceUsage.Default,
+                BindFlags = BindFlags.DepthStencil,
+                CpuAccessFlags = CpuAccessFlags.None,
+                OptionFlags = ResourceOptionFlags.None
+            };
+
+            _depthStencilBuffer = new Texture2D(_device, depthDisc);
+
+            var depthStencilViewDisc = new DepthStencilViewDescription()
+            {
+                Format = Format.D24_UNorm_S8_UInt,
+                Dimension = DepthStencilViewDimension.Texture2D,
+                MipSlice = 0
+            };
+
+            var viewport = new Viewport()
+            {
+                Width = width,
+                Height = height,
+                MinZ = 0.0f,
+                MaxZ = 1.0f,
+                X = 0.0f,
+                Y = 0.0f
+            };
+
+            _context.Rasterizer.SetViewports(viewport);
+
+            //create the depth stencil view and set the render target
+            _depthStencilView = new DepthStencilView(_device, _depthStencilBuffer, depthStencilViewDisc);
+            _context.OutputMerger.SetTargets(_depthStencilView, _renderTarget);
+        }
+
+        /// <summary>
+        /// Dispose of all unmanaged objects
+        /// </summary>
         public void Dispose()
         {
             _alphaEnabledBlendState.Dispose();
