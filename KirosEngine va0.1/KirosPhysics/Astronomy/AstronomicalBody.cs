@@ -128,6 +128,19 @@ namespace KirosPhysics.Astronomy
         {
             _orbitRadiusAverage = averageOrbitalRadius;
         }
+        
+        protected AstronomicalBody(float averageOrbitalRadius, AstronomicalBody parentBody)
+        {
+            _orbitRadiusAverage = averageOrbitalRadius;
+            _parentBody = parentBody;
+        }
+        
+        protected AstronomicalBody(float averageOrbitalRadius, AstronomicalBody parentBody, Universe universe)
+        {
+            _orbitRadiusAverage = averageOrbitalRadius;
+            _parentBody = parentBody;
+            _universe = universe;
+        }
         #endregion
 
         /// <summary>

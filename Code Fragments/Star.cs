@@ -1,62 +1,28 @@
+using SlimDX;
+using KirosPhysics.Astronomy;
+
 namespace KirosProject
 {
     //represents a star on a map
-    public class Star
+    public class Star : Astronomy.Star
     {
         private string _name;
         private string _id; //should be ccreated on generation and registration, unique
         private Vector3 _location; //0,0,0 is relative to the galaxy the star is in
-        private Orbit _orbit; //the star's orbit around the galactic center
-        
-        private float _radius;
-        private float _mass;
-        private float _temp;
-        private float _age;
         
         private float _tickTime; //records the last time a tick was performed
         
-        public Star(string name, Vector3 location, float radius, float mass, float temp, float age)
+        public Star(string name, Vector3 location, Astronomy.Star star) : base(star)
         {
             _name = name;
             _location = location;
-            _radius = radius;
-            _mass = mass;
-            _temp = temp;
-            _age = age;
         }
         
-        public Star(string name, string id, Vector3 location, float radius, float mass, float temp, float age)
+        public Star(string name, string id, Vector3 location, Astronomy.Star star) : base(star)
         {
             _name = name;
             _id = id;
             _location = location;
-            _radius = radius;
-            _mass = mass;
-            _temp = temp;
-            _age = age;
-        }
-        
-        public Star(string name, Vector3 location, Orbit orbit, float radius, float mass, float temp, float age)
-        {
-            _name = name;
-            _location = location;
-            _orbit = orbit;
-            _radius = radius;
-            _mass = mass;
-            _temp = temp;
-            _age = age;
-        }
-        
-        public Star(string name, string id, Vector3 location, Orbit orbit, float radius, float mass, float temp, float age)
-        {
-            _name = name;
-            _id = id;
-            _location = location;
-            _orbit = orbit;
-            _radius = radius;
-            _mass = mass;
-            _temp = temp;
-            _age = age;
         }
         
         //randomly generate a star
