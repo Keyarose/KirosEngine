@@ -41,6 +41,7 @@ namespace KirosEngine
         InputCore _inputCore;
         DeviceCollection _soundDevices;
         DeviceCollection _soundInputDevices;
+        bool _userResized = true;
 
         protected RenderForm _clientForm;
         protected string _languageLocal = "en"; //defaults to en(English)
@@ -291,16 +292,21 @@ namespace KirosEngine
 
         public void Run()
         {
-            //TODO: handle resize events
-            _clientForm.Resize += (o, e) =>
+            _clientForm.UserResized += (o, e) =>
                 {
-
+                    _userResized = true;
                 };
 
             MessagePump.Run(_clientForm, () =>
                 {
                     //global timer tick here?
                     //clear background first
+                    if(_userResized)
+                    {
+                        _core.Resize(_clientForm.Width, _clientForm.Height);
+                        _userResized = false;
+                    }
+
                     this.Update();
                     this.Draw();
                 });

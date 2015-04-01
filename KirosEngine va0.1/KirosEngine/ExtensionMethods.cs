@@ -11,7 +11,15 @@ namespace KirosEngine
     {
         public static string TryGetElementValue(this XElement parentEl, string elementName, XNamespace nameSpace = null, string defaultValue = null)
         {
-            var foundEl = parentEl.Element(nameSpace + elementName);
+            XElement foundEl;
+            if(nameSpace != null)
+            {
+                foundEl = parentEl.Element(nameSpace + elementName);
+            }
+            else
+            {
+                foundEl = parentEl.Element(elementName);
+            }
 
             if (foundEl != null)
             {
