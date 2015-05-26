@@ -3,18 +3,20 @@ public interface IEquipable
     private EquipmentSlot _slot;
     private EquipmentSlot _secondarySlot;
     
-    public EquipmentSlot Slot;
-    public EquipmentSlot SecondarySlot;
+    public EquipmentSlot Slot; //the primary slot the item is equiped into
+    public EquipmentSlot SecondarySlot; //the secondary slot the item is equiped into
 }
 
 public enum EquipmentSlot
 {
-    Head, //helm
-    LeftEye,
+    Head, //helms, hats, hoods
+    Head2, //wigs, fake ears, headphones
+    LeftEye, //monicles, lenses
     RightEye,
-    Ears,
-    Nose,
-    Face,
+    Ears, //earrings, ear plugs
+    Nose, //rings, plugs
+    Face, //mask, 
+    UpperFace, //glasses
     Neck,
     Body,
     LeftWrist,

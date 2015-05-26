@@ -1,20 +1,20 @@
 namespace KirosProject
 {
-    public class BluePrint
+    public class Blueprint
     {
         private string _id;
         private string _name;
         private List<ComponentAlignment> _components;
         private string _itemIdResult;
         
-        public BluePrint(string id, string name, string result)
+        public Blueprint(string id, string name, string result)
         {
             _id = id;
             _name = name;
             _itemIdResult = result;
         }
         
-        public BluePrint(XDocument xml)
+        public Blueprint(XDocument xml)
         {
             this.ParseXml(xml);
         }
