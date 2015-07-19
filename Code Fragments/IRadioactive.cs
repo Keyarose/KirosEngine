@@ -1,4 +1,4 @@
-namesapce KirosPhysics
+namespace KirosPhysics
 {
     public interface IRadioactive
     {
