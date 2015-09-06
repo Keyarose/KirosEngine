@@ -138,6 +138,10 @@ namespace KirosEngine.Material
                     shaderToUse.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix);
                 }
             }
+            else
+            {
+                ErrorLogger.Write(String.Format("Object Material: {0} is not properly initialized. The given shader ID: {1}, is not recognized.", _name, _shaderID));
+            }
         }
     }
 }
