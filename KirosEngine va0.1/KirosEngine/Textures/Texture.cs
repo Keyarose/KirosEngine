@@ -60,7 +60,7 @@ namespace KirosEngine.Textures
             }
             catch (System.IO.IOException ex)
             {
-                //issue geting the file this should be handled by the developer
+                //issue getting the file this should be handled by the developer
                 Console.WriteLine(ex.Message);
                 return false;
             }

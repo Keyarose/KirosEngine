@@ -157,7 +157,8 @@
     <xs:sequence>
       <xs:sequence>
         <xs:element name="fileName" type="xs:string"/>
-        <xs:element name="texture" type="xs:string"/>
+        <xs:element name="texture" type="xs:string" minOccurs="0"/>
+        <xs:element name="material" type="xs:string" minOccurs="0"/>
         <xs:element name="position" type="vector3type"/>
       </xs:sequence>
     </xs:sequence>

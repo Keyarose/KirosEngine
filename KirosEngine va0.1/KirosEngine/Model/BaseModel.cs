@@ -7,6 +7,8 @@ using SlimDX;
 using SlimDX.Direct3D11;
 using SlimDX.DXGI;
 using KirosEngine.Scene;
+using KirosEngine.Camera;
+using KirosEngine.Light;
 using KirosEngine.Material;
 
 using Device = SlimDX.Direct3D11.Device;
@@ -86,14 +88,45 @@ namespace KirosEngine.Model
         }
 
         /// <summary>
+        /// Constructor with nodeID specified
+        /// </summary>
+        /// <param name="device">The graphics device</param>
+        /// <param name="position">The position of the model</param>
+        /// <param name="nodeID">The ID string for the node</param>
+        public BaseModel(Device device, Vector3 position, string nodeID) : base(nodeID, position)
+        {
+            _device = device;
+        }
+
+        /// <summary>
+        /// Constructor with Material
+        /// </summary>
+        /// <param name="device">The graphics device</param>
+        /// <param name="position">The position of the model</param>
+        /// <param name="nodeID">The ID string for the node</param>
+        /// <param name="material">The material for the model</param>
+        public BaseModel(Device device, Vector3 position, string nodeID, ObjectMaterial material) : base(nodeID, position)
+        {
+            _device = device;
+            _material = material;
+        }
+
+        /// <summary>
         /// Draw the model
         /// </summary>
         /// <param name="context">The device context</param>
-        public virtual void Draw(DeviceContext context)
+        public virtual void Draw(DeviceContext context, Matrix worldMatrix, Matrix projectionMatrix, Matrix viewMatrix, BaseCamera camera, params BasicLight[] lights)
         {
             context.InputAssembler.SetVertexBuffers(0, new VertexBufferBinding(_vertexBuffer, this._vertexStride, 0));
             context.InputAssembler.SetIndexBuffer(_indexBuffer, Format.R32_UInt, 0);
             context.InputAssembler.PrimitiveTopology = PrimitiveTopology.TriangleList;
+
+            if(_material == null)
+            {
+                ErrorLogger.Write(String.Format("Attempting to draw model: {0} with no material set", this._nodeID));
+                //throw exception
+            }
+            _material.Draw(context, worldMatrix, projectionMatrix, viewMatrix, this.IndexCount, this.Position, camera, lights);
         }
 
         /// <summary>

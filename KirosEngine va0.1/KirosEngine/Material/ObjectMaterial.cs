@@ -110,7 +110,7 @@ namespace KirosEngine.Material
         /// <param name="model">The model being drawn</param>
         /// <param name="camera">The camera currently in use</param>
         /// <param name="lights">The lights to be used for the draw</param>
-        public void Draw(DeviceContext context, Matrix worldMatrix, Matrix projectionMatrix, Matrix viewMatrix, FileModel model, BaseCamera camera, params BasicLight[] lights)
+        public void Draw(DeviceContext context, Matrix worldMatrix, Matrix projectionMatrix, Matrix viewMatrix, int indexCount, Vector3 position, BaseCamera camera, params BasicLight[] lights)
         {
             BaseShader shaderToUse = ShaderManager.Instance.GetShaderForKey(_shaderID);
             Texture texture = TextureManager.Instance.GetTexture(_texture);
@@ -119,23 +119,23 @@ namespace KirosEngine.Material
             {
                 if (shaderToUse.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.LightBuffer | ShaderBufferFlags.CameraBuffer | ShaderBufferFlags.SamplerBuffer))
                 {
-                    shaderToUse.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, texture.GetTexture(), lights[0], camera.Position);
+                    shaderToUse.Draw(context, indexCount, Matrix.Translation(position) * worldMatrix, projectionMatrix, viewMatrix, texture.GetTexture(), lights[0], camera.Position);
                 }
                 else if (shaderToUse.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.SamplerBuffer | ShaderBufferFlags.PixelBuffer))
                 {
-                    shaderToUse.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, texture.GetTexture(), _color);
+                    shaderToUse.Draw(context, indexCount, Matrix.Translation(position) * worldMatrix, projectionMatrix, viewMatrix, texture.GetTexture(), _color);
                 }
                 else if (shaderToUse.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.LightBuffer | ShaderBufferFlags.CameraBuffer))
                 {
-                    shaderToUse.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, lights[0], camera.Position);
+                    shaderToUse.Draw(context, indexCount, Matrix.Translation(position) * worldMatrix, projectionMatrix, viewMatrix, lights[0], camera.Position);
                 }
                 else if (shaderToUse.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.SamplerBuffer))
                 {
-                    shaderToUse.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, texture.GetTexture());
+                    shaderToUse.Draw(context, indexCount, Matrix.Translation(position) * worldMatrix, projectionMatrix, viewMatrix, texture.GetTexture());
                 }
                 else if (shaderToUse.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer))
                 {
-                    shaderToUse.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix);
+                    shaderToUse.Draw(context, indexCount, Matrix.Translation(position) * worldMatrix, projectionMatrix, viewMatrix);
                 }
             }
             else

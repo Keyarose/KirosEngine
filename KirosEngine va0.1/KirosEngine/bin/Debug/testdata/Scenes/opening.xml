@@ -130,11 +130,13 @@
       <model>
         <fileName>cubeTest.txt</fileName>
         <texture>tanStone</texture>
+        <material>litStone</material>
         <position x="0.0" y="0.0" z="0.0"/>
       </model>
       <model>
         <fileName>cubeTest.txt</fileName>
         <texture>tanStone</texture>
+        <material>litStone</material>
         <position x="-2.0" y="0.0" z="0.0"/>
       </model>
     </models>

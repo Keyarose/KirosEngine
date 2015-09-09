@@ -14,11 +14,10 @@ namespace KirosEngine
 {
     class Program
     {
-        //should eventualy receive a file path to the game data folder
         /// <summary>
         /// Main entry function for the program
         /// </summary>
-        /// <param name="args">First parameter must be "dx" or "gl" to specify directx or opengl respectivly. The second parameter should be the path to the 
+        /// <param name="args">First parameter must be "dx" or "gl" to specify DirectX or OpenGl respectively. The second parameter should be the path to the 
         /// data for a game. No parameters defaults to library mode with directX</param>
         [STAThread]
         static void Main(string[] args)
@@ -44,7 +43,7 @@ namespace KirosEngine
             }
             else if(args.Length == 2 && args[0].Equals("gl"))
             {
-                //TODO: start in game mode with opengl
+                //TODO: start in game mode with OpenGl
             }
         }
     }

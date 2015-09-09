@@ -9,6 +9,7 @@ using SlimDX.DXGI;
 using SlimDX.Direct3D11;
 using SlimDX.D3DCompiler;
 using KirosEngine.Textures;
+using KirosEngine.Material;
 
 using Device = SlimDX.Direct3D11.Device;
 using Marshal = System.Runtime.InteropServices.Marshal;
@@ -64,7 +65,15 @@ namespace KirosEngine.Model
             _vertexStride = Marshal.SizeOf(typeof(TexVertex));
             _modelFileName = modelFileName;
             _texture = texture;
-            texture.Initialize(device);
+
+            LoadModel(modelFileName);
+            Init();
+        }
+
+        public FileModel(Device device, string modelFileName, ObjectMaterial material) : base(device, new Vector3(), "", material)
+        {
+            _vertexStride = Marshal.SizeOf(typeof(TexVertex));
+            _modelFileName = modelFileName;
 
             LoadModel(modelFileName);
             Init();
@@ -155,6 +164,7 @@ namespace KirosEngine.Model
 
         private bool LoadTexture(string fileName)
         {
+            //TODO: rework to use the texture manager
             _texture = new Texture(fileName, "");
             _texture.Initialize(_device);
 

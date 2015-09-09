@@ -183,9 +183,10 @@ namespace KirosEngine.Scene
         {
             string modelFile = model.Element(SceneNS + "fileName").Value;
             string textureID = model.Element(SceneNS + "texture").Value;
+            string materialID = model.Element(SceneNS + "material").Value;
             XElement position = model.Element(SceneNS + "position");
 
-            FileModel newModel = new FileModel(_device, _modelPath +"/"+ modelFile, TextureManager.Instance.GetTexture(textureID));
+            FileModel newModel = new FileModel(_device, _modelPath +"/"+ modelFile, MaterialManager.Instance.GetMaterialForKey(materialID));
             newModel.SetPosition(new Vector3(float.Parse(position.Attribute("x").Value), float.Parse(position.Attribute("y").Value), float.Parse(position.Attribute("z").Value)));
             _nodes.Add(newModel);
         }
@@ -211,7 +212,9 @@ namespace KirosEngine.Scene
             string textureID = texture.Element(SceneNS + "id").Value;
             string file = TextureManager.Instance.TexturePath + "/" + texture.Element(SceneNS + "fileName").Value;
 
-            TextureManager.Instance.AddTexture(new Texture(file, textureID));
+            Texture t1 = new Texture(file, textureID);
+            TextureManager.Instance.AddTexture(t1);
+            t1.Initialize(_device);
         }
 
         private void LoadMaterial(XElement xml)
@@ -220,7 +223,7 @@ namespace KirosEngine.Scene
             string shaderID = xml.Element(SceneNS + "shader").Value;
             string textureID = xml.Element(SceneNS + "texture").Value;
 
-            ObjectMaterial mat = new ObjectMaterial(materialName, shaderID, textureID);
+            ObjectMaterial mat = new ObjectMaterial(materialName, textureID, shaderID);
             bool result = MaterialManager.Instance.AddMaterial(materialName, mat);
 
             if(!result)
@@ -340,30 +343,30 @@ namespace KirosEngine.Scene
 
         public void Draw(DeviceContext context, Matrix viewMatrix, Matrix worldMatrix, Matrix projectionMatrix)
         {
-            BaseShader shader = ShaderManager.Instance.GetShaderForKey("simpleLight");
+            //BaseShader shader = ShaderManager.Instance.GetShaderForKey("simpleLight");
             foreach(FileModel model in _nodes)
             {
-                model.Draw(context);
-                if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.LightBuffer | ShaderBufferFlags.CameraBuffer | ShaderBufferFlags.SamplerBuffer))
-                {
-                    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, model.GetTexture(), _lights[0], _defaultCamera.Position);
-                }
-                else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.SamplerBuffer | ShaderBufferFlags.PixelBuffer))
-                {
-                    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, model.GetTexture(), new Vector4());
-                }
-                else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.LightBuffer | ShaderBufferFlags.CameraBuffer))
-                {
-                    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, _lights[0], _defaultCamera.Position);
-                }
-                else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.SamplerBuffer))
-                {
-                    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, model.GetTexture());
-                }
-                else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer))
-                {
-                    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix);
-                }
+                model.Draw(context, worldMatrix, projectionMatrix, viewMatrix, _defaultCamera, _lights.ToArray());
+                //if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.LightBuffer | ShaderBufferFlags.CameraBuffer | ShaderBufferFlags.SamplerBuffer))
+                //{
+                //    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, model.GetTexture(), _lights[0], _defaultCamera.Position);
+                //}
+                //else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.SamplerBuffer | ShaderBufferFlags.PixelBuffer))
+                //{
+                //    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, model.GetTexture(), new Vector4());
+                //}
+                //else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.LightBuffer | ShaderBufferFlags.CameraBuffer))
+                //{
+                //    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, _lights[0], _defaultCamera.Position);
+                //}
+                //else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer | ShaderBufferFlags.SamplerBuffer))
+                //{
+                //    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix, model.GetTexture());
+                //}
+                //else if(shader.ShaderBufferFlags.HasFlag(ShaderBufferFlags.MatrixBuffer))
+                //{
+                //    shader.Draw(context, model.IndexCount, Matrix.Translation(model.Position) * worldMatrix, projectionMatrix, viewMatrix);
+                //}
             }
         }
     }
