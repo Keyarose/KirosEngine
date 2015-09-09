@@ -23,31 +23,7 @@ namespace KirosEngine
         [STAThread]
         static void Main(string[] args)
         {
-            if ((args.Length == 0) || (args.Length == 1 && args[0].Equals("dx")))
-            {
-                //Scrapped for now
-                Client client;
-                
-                client = new Client("Kiros Client");
-                client.Initialize();
-                client.Load();
-                client.Run();
-                client.Unload();
-
-                //relaunch with argument when starting a game
-                //ProcessStartInfo pStartInfo = new ProcessStartInfo();
-                //pStartInfo.Arguments = string.Join(" ", args); //replace args with the directory for the chosen game and the graphics mode used
-                //pStartInfo.FileName = Application.ExecutablePath;
-                //Process.Start(pStartInfo);
-                //Application.Exit();
-
-                //Console.WriteLine("No directory specified for the game data.");
-            }
-            else if(args.Length == 1 && args[0].Equals("gl"))
-            {
-                //TODO: start in library mode with opengl
-            }
-            else if (args.Length == 2 && args[0].Equals("dx"))
+            if (args.Length == 2 && args[0].Equals("dx"))
             {
                 Client client;
 

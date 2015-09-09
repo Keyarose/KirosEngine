@@ -36,3 +36,41 @@ C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEdi
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.exe
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.pdb
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosEditor\bin\Debug\preferences.xml
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.csprojResolveAssemblyReference.cache
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.MainForm.resources
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.Properties.Resources.resources
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.SolarSystemForm.resources
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.csproj.GenerateResource.Cache
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\Resources\Fonts\arial16base_0.png
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\Resources\Fonts\arial32base_0.png
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Models\cubeTest.txt
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Sound\town2.WAV
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Textures\tanStone.gif
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\Resources\Fonts\arial16base.fnt
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\Resources\Fonts\arial32base.fnt
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\Resources\Shaders\DX\font.ps
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\Resources\Shaders\DX\font.vs
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Shaders\color.ps
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Shaders\color.vs
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Shaders\font.ps
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Shaders\font.vs
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Shaders\light.ps
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Shaders\light.vs
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Shaders\texture.ps
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Shaders\texture.vs
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\preferences.xml
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\data.xml
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Scenes\index.xml
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\testdata\Scenes\opening.xml
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.exe.config
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.exe
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEditor.pdb
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEngine.exe
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\SlimDX.dll
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\ClrTest.Reflection.ILReader.dll
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\KirosEngine.pdb
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\SlimDX.pdb
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\SlimDX.xml
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\bin\Debug\ClrTest.Reflection.ILReader.pdb
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.exe
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosEditor\obj\Debug\KirosEditor.pdb

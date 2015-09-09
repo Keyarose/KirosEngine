@@ -27,6 +27,16 @@ namespace KirosPhysics.Astronomy
 
         #region Accessors
         /// <summary>
+        /// Public accessor for the astronomical body's mass
+        /// </summary>
+        public float Mass
+        {
+            get
+            {
+                return _mass;
+            }
+        }
+        /// <summary>
         /// Public accessor for the astronomical body's average orbital radius
         /// </summary>
         public float OrbitRadiusAverage

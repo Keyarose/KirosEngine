@@ -120,55 +120,6 @@ namespace KirosEngine
             return result;
         }
 
-        //TODO: Complete scrap of library mode
-        #region Library Mode
-        /// <summary>
-        /// Begin loading the client in library mode, rather than a specific game
-        /// </summary>
-        /// <returns>Returns true if it is able to load successfully</returns>
-        public bool Load()
-        {
-            _libraryMode = true;
-            bool result = true;
-            //check the default path for game data folders and get a list of them
-            string[] gameFolders = Directory.GetDirectories(_defaultGamesDirectory);
-            GameData[] gameData = new GameData[gameFolders.Length];
-            int count = 0;
-            
-            foreach(string gameFolder in gameFolders)
-            {
-                string gameDataFilePath = gameFolder + "/data.xml";
-                gameData[count] = this.LoadData(XDocument.Load(gameDataFilePath));
-                
-                count++;
-            }
-            return result;
-        }
-        
-        /// <summary>
-        /// Load the data for the given game document
-        /// </summary>
-        /// <param name="xml">The XDocument to load the data from</param>
-        /// <returns>Returns a GameData object containing the information</returns>
-        protected GameData LoadData(XDocument xml)
-        {
-            GameData data = new GameData();
-            //load the title
-            XElement titles = xml.Root.Element("titles");
-            var title = from langTitle in titles.Elements("title")
-                        where (string)langTitle.Attribute("lang") == _languageLocal
-                        select langTitle;
-            foreach(XElement t in title)
-            {
-                data.Title = t.Value;
-            }
-            data.IconPath = xml.Root.Element("icon").Value;
-            data.Copyright = xml.Root.Element("copyright").Value;
-            
-            return data;
-        }
-        #endregion
-
         /// <summary>
         /// Begin loading the first scene and the game data(probably the main menu or opening animation/credits)
         /// </summary>

@@ -8,3 +8,8 @@ C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosChe
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosChemistry\obj\Debug\KirosChemistry.csprojResolveAssemblyReference.cache
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosChemistry\obj\Debug\KirosChemistry.dll
 C:\Users\Bradley\Documents\Bradley\Kiros Project\Code\KirosEngine va0.1\KirosChemistry\obj\Debug\KirosChemistry.pdb
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosChemistry\bin\Debug\KirosChemistry.dll
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosChemistry\bin\Debug\KirosChemistry.pdb
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosChemistry\obj\Debug\KirosChemistry.csprojResolveAssemblyReference.cache
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosChemistry\obj\Debug\KirosChemistry.dll
+C:\Users\Bradley\Documents\Bradley\Code\KirosEngine\KirosEngine va0.1\KirosChemistry\obj\Debug\KirosChemistry.pdb

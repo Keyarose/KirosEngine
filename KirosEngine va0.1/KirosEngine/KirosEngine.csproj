@@ -153,7 +153,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Visual Studio 2010\Projects\ILReader\ILReader.csproj">
+    <ProjectReference Include="..\..\..\..\..\Visual Studio 2013\Projects\ILReader\ILReader.csproj">
       <Project>{3B40E8C3-C4E8-4085-9F82-F64308F3791C}</Project>
       <Name>ILReader</Name>
     </ProjectReference>
