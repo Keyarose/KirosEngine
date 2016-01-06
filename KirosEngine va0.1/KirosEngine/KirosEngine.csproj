@@ -95,6 +95,7 @@
     <Compile Include="Exception\KirosException.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameTime.cs" />
     <Compile Include="Input\InputCore.cs" />
     <Compile Include="Input\KeyboardBindings.cs" />
     <Compile Include="Input\KeyboardHandler.cs" />
