@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Xml.Linq;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,11 @@ namespace KirosEngine
         DeviceCollection _soundDevices;
         DeviceCollection _soundInputDevices;
         bool _userResized = true;
+
+        protected GameTime _gameTime = new GameTime();
+        protected Stopwatch _gameTimer;
+        protected TimeSpan _elapsedTime;
+        protected long _prevTicks = 0;
 
         protected RenderForm _clientForm;
         protected string _languageLocal = "en"; //defaults to en(English)
@@ -241,6 +247,20 @@ namespace KirosEngine
             }
         }
 
+        public void Tick()
+        {
+            long currTicks = _gameTimer.Elapsed.Ticks;
+            _elapsedTime += TimeSpan.FromTicks(currTicks - _prevTicks);
+            _prevTicks = currTicks;
+
+            _gameTime.ElapsedGameTime = _elapsedTime;
+            _gameTime.TotalGameTime += _elapsedTime;
+            _elapsedTime = TimeSpan.Zero;
+
+            this.Update(_gameTime);
+            this.Draw(_gameTime);
+        }
+
         public void Run()
         {
             _clientForm.UserResized += (o, e) =>
@@ -248,9 +268,9 @@ namespace KirosEngine
                     _userResized = true;
                 };
 
+            _gameTimer = Stopwatch.StartNew();
             MessagePump.Run(_clientForm, () =>
                 {
-                    //global timer tick here?
                     //clear background first
                     if(_userResized)
                     {
@@ -258,8 +278,7 @@ namespace KirosEngine
                         _userResized = false;
                     }
 
-                    this.Update();
-                    this.Draw();
+                    this.Tick();
                 });
 
             //TODO: handle the window being closed by the used clicking the x
@@ -289,7 +308,7 @@ namespace KirosEngine
         /// <summary>
         /// Update the world
         /// </summary>
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             _keyHandler.Update();
             _clientConsole.Update();
@@ -298,7 +317,7 @@ namespace KirosEngine
         /// <summary>
         /// Draw the view
         /// </summary>
-        public void Draw()
+        public void Draw(GameTime gameTime)
         {
             _core.BeginScene(new Color4(0.5f, 0.5f, 1.0f));
 
