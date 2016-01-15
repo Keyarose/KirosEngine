@@ -1,8 +1,10 @@
 namespace KirosPhysics
 {
+    //Defines an ambent energy field, could be electromag, thermal, grav, or fictonal
     public class EnergyField
     {
         protected string _name;
+        protected float _strength;
         
         public string Name
         {

@@ -3,8 +3,8 @@ namespace KirosProject
     class Event
     {
         protected string _id;
-        //list of actions paired with the performing actor's id
-        protected List<Pair<string, Action>> _actorActionList;
+        //list of actions grouped with the performing actor's id and an unique id number
+        protected List<Triad<uint, string, Action>> _actorActionList;
         //string == "null" refers to unknown actor
         
         public string ID

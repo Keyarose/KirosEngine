@@ -1,6 +1,6 @@
 namespace KirosPhysics
 {
-    public class EmitedEnergyField : EnergyField
+    public class EmitedEnergyField : EnergyField, IComponent
     {
         protected Vector3 _emissionPoint;
         protected float _fieldStrength; //defines a multiplyer for the strength of the field
