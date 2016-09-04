@@ -19,6 +19,11 @@ namespace KirosProject
             _eventList = new List<Event>();
         }
         
+        public ActorMemory(XElement xml)
+        {
+            //parse
+        }
+        
         public void AddEvent(Event event)
         {
             _eventList.Add(event);
