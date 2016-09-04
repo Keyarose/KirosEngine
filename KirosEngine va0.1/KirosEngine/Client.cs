@@ -17,6 +17,7 @@ using KirosEngine.Scene;
 using KirosEngine.Material;
 using KirosEngine.Exception;
 using KirosEngine.Textures;
+using KirosEngine.Events;
 using KirosEngine.Sound;
 using KirosEngine.Camera;
 using KirosEngine.Shader;
@@ -56,6 +57,7 @@ namespace KirosEngine
         protected string _gameTitle;
         protected SceneManager _sceneManager;
         protected MaterialManager _materialManager;
+        protected EventManager _eventManager;
         protected KeyboardHandler _keyHandler;
         protected Font _defaultFont;
         protected BaseCamera _defaultCamera;
@@ -95,7 +97,10 @@ namespace KirosEngine
             ErrorLogger.Initialize("log");
 
             //graphics init
-            _core.Initialize(_clientForm, false, 0.1f, 1000.0f);
+            if(!_core.Initialize(_clientForm, false, 0.1f, 1000.0f))
+            {
+                return false;
+            }
             _device = _core.GetDevice();
             _context = _device.ImmediateContext;
 
@@ -329,7 +334,7 @@ namespace KirosEngine
             projectionMatrix = _core.GetProjectionMatrix();
             orthoMatrix = _core.GetOrthoMatrix();
 
-            rotation += (float)(Math.PI * 0.0001f);
+            rotation += (float)(Math.PI * 0.01f * gameTime.ElapsedGameTime.Milliseconds);
 
             Matrix worldMatrixR = Matrix.Multiply(worldMatrix, Matrix.RotationY(rotation));
 

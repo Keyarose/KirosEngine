@@ -85,10 +85,11 @@ namespace KirosEngine.Camera
         }
 
         /// <summary>
-        /// Perform all neccesary actions to draw
+        /// Perform all necessary actions to draw
         /// </summary>
         public virtual void Draw()
         {
+            //TODO: refactor to calculate only if data has changed
             Vector3 up, lookAt, position;
             float yaw, pitch, roll;
             Matrix rotationMatrix;

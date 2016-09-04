@@ -83,12 +83,15 @@
     <Compile Include="Camera\BaseCamera.cs" />
     <Compile Include="Camera\SimpleCamera.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="DirectXClient.cs" />
     <Compile Include="EngineConsole\ClientConsole.cs" />
     <Compile Include="D3DCore.cs" />
     <Compile Include="EngineConsole\CpuMonitor.cs" />
     <Compile Include="EngineConsole\FpsCounter.cs" />
     <Compile Include="EngineConsole\RamMonitor.cs" />
     <Compile Include="ErrorLogger.cs" />
+    <Compile Include="Events\Event.cs" />
+    <Compile Include="Events\EventManager.cs" />
     <Compile Include="ExceptionAnalyser.cs" />
     <Compile Include="Exception\IDInUseException.cs" />
     <Compile Include="Exception\InvalidDataValueException.cs" />
