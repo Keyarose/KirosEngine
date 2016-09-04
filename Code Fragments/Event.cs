@@ -9,6 +9,7 @@ namespace KirosProject
         protected List<Triad<uint, string, Action>> _actorActionList;
         //string == "null" refers to unknown actor
         protected uint _nextActionID;
+        protected ?type? _eventResult; //defines the actor's conclusion of the event
         
         public string ID
         {
