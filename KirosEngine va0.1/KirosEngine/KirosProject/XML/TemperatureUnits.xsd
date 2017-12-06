@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TemperatureUnits"
+    targetNamespace="http://kirosindustries.com/TemperatureUnits.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://kirosindustries.com/TemperatureUnits.xsd"
+    xmlns:mstns="http://kirosindustries.com/TemperatureUnits.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="temperatureUnits" type="tempUnitsType"/>
+  <xs:complexType name="tempUnitsType">
+    <xs:sequence>
+      <xs:element name="temperatureUnit" type="tempUnitType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tempUnitType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="convertFactor" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
