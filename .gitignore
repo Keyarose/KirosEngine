@@ -1,2 +1,8 @@
 *.dia~
 bin/
+KirosEngine va0.1/KirosEngine/KirosProject/obj/x64/Debug/
+KirosEngine va0.1/KirosEditor/obj/x64/Debug/
+KirosEngine va0.1/KirosEditor/obj/Release/
+KirosEngine va0.1/KirosEngine/KirosProject/obj/Release/
+KirosEngine va0.1/KirosEditor/obj/Debug/
+KirosEngine va0.1/KirosEngine/KirosProject/obj/Debug/

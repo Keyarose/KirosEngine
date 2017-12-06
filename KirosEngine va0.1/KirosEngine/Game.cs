@@ -4,9 +4,14 @@ namespace KirosEngine
 {
     public abstract class Game
     {
-        public virtual bool Load()
+        protected string _gamePath;
+
+        public virtual bool Load(string filePath)
         {
             bool result = true;
+            _gamePath = filePath;
+            ErrorLogger.Instance.FilePath = _gamePath;
+            string gameDataFilePath = _gamePath + "/data.xml";
 
             return result;
         }

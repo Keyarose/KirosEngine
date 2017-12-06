@@ -12,15 +12,28 @@ namespace KirosPhysics.Astronomy
         protected AstronomicalBody _parentBody; //what it orbits
 
         protected float _orbitRadiusAverage = 0.0f;
-        protected float _orbitEccentricity;
-        protected float _currentOrbitRadius; //internal use only?
-        protected float _currentOrbitAngle; //angle from closest approach
-        protected float _orbitRadiusMax;
-        protected float _orbitRadiusMin;
-        protected float _orbitPeriod;
-        protected float _orbitVelocity;
-        protected float _semiMajoralAxis;
-        protected float _semiLatus;
+        protected float _orbitEccentricity = 0.0f;
+        protected float _currentOrbitRadius = 0.0f; //internal use only?
+        protected float _currentOrbitAngle = 0.0f; //angle from closest approach
+        protected float _orbitRadiusMax = 0.0f;
+        protected float _orbitRadiusMin = 0.0f;
+        protected float _orbitPeriod = 0.0f;
+        protected float _orbitVelocity = 0.0f;
+        protected float _semiMajoralAxis = 0.0f;
+        protected float _semiLatus = 0.0f;
+
+        //dirty flags recalc data
+        protected bool _flagORA = false;
+        protected bool _flagOE = false;
+        protected bool _flagCOR = false;
+        protected bool _flagCOA = false;
+        protected bool _flagORMax = false;
+        protected bool _flagORMin = false;
+        protected bool _flagOP = false;
+        protected bool _flagOV = false;
+        protected bool _flagSMA = false;
+        protected bool _flagSL = false;
+        protected bool _flagM = false;
 
         protected Vector3 _velocity;
         protected float _mass = 0.0f;
@@ -48,6 +61,7 @@ namespace KirosPhysics.Astronomy
             set
             {
                 _orbitRadiusAverage = value;
+                _flagORA = true;
             }
         }
 
@@ -63,6 +77,7 @@ namespace KirosPhysics.Astronomy
             set
             {
                 _orbitEccentricity = value;
+                _flagOE = true;
             }
         }
 
@@ -78,6 +93,7 @@ namespace KirosPhysics.Astronomy
             set
             {
                 _orbitRadiusMax = value;
+                _flagORMax = true;
             }
         }
 
@@ -93,6 +109,7 @@ namespace KirosPhysics.Astronomy
             set
             {
                 _orbitRadiusMin = value;
+                _flagORMin = true;
             }
         }
 
@@ -109,6 +126,7 @@ namespace KirosPhysics.Astronomy
             set
             {
                 _orbitVelocity = value;
+                _flagOV = true;
             }
         }
 
@@ -124,6 +142,7 @@ namespace KirosPhysics.Astronomy
             set
             {
                 _orbitPeriod = value;
+                _flagOP = true;
             }
         }
         #endregion
@@ -159,7 +178,7 @@ namespace KirosPhysics.Astronomy
         /// <returns>Returns the force on an object on the body</returns>
         public float GravitationalForce()
         {
-            return (float)(_universe.GravitationalConstant * _mass);
+            return _universe.GravitationalConstant * _mass;
         }
 
         /// <summary>
@@ -176,58 +195,58 @@ namespace KirosPhysics.Astronomy
         protected void Calculate()
         {
             //calc orbit radius or eccentricity
-            if(_orbitEccentricity != null)
+            if(_flagOE)
             {
                 _orbitRadiusMax = _orbitRadiusAverage * (1 + _orbitEccentricity);
                 _orbitRadiusMin = _orbitRadiusAverage * (1 - _orbitEccentricity);
             }
-            else if(_orbitRadiusMax != null)
+            else if(_flagORMax)
             {
                 _orbitEccentricity = (_orbitRadiusMax / _orbitRadiusAverage) - 1;
             }
-            else if(_orbitRadiusMin != null)
+            else if(_flagORMin)
             {
                 _orbitEccentricity = -((_orbitRadiusMin / _orbitRadiusAverage) - 1);
             }
 
             //calc semiLatus
-            if(_orbitEccentricity != null && _orbitRadiusMin != null)
+            if(_flagOE || _flagORMin)
             {
                 _semiLatus = _orbitRadiusMin * (1 + _orbitEccentricity);
             }
             
             //calc semi-majoral axis, radius min, or radius max
-            if(_orbitRadiusMax != null && _orbitRadiusMin != null)
+            if(_flagORMax || _flagORMin)
             {
                 _semiMajoralAxis = (_orbitRadiusMax + _orbitRadiusMin) / 2.0f;
             }
-            else if(_semiMajoralAxis != null && _orbitRadiusMax != null)
+            else if(_flagSMA || _flagORMax)
             {
                 _orbitRadiusMin = (_semiMajoralAxis * 2.0f) - _orbitRadiusMax;
             }
-            else if(_semiMajoralAxis != null && _orbitRadiusMin != null)
+            else if(_flagSMA || _flagORMin)
             {
                 _orbitRadiusMax = (_semiMajoralAxis * 2.0f) - _orbitRadiusMin;
             }
             
             //calc orbit period or semi-majoral axis
-            if(_semiMajoralAxis != null && _mass != null)
+            if(_flagSMA || _flagM)
             {
                 _orbitPeriod = (float)(2.0f * Math.PI * Math.Sqrt(Math.Pow(_semiMajoralAxis, 3) / _mass * _universe.GravitationalConstant));
             }
-            else if(_orbitPeriod != null && _mass != null)
+            else if(_flagOP && _flagM)
             {
                 _semiMajoralAxis = (float)(Math.Pow(Math.Pow(_orbitPeriod / (2.0f * Math.PI), 2) * _mass * _universe.GravitationalConstant, 1.0f / 3.0f));
             }
 
             //calc current orbit radius
-            if(_semiLatus != null && _orbitEccentricity != null)
+            if(_flagSL && _flagOE)
             {
                 _currentOrbitRadius = _semiLatus / (1 + _orbitEccentricity * _currentOrbitAngle);
             }
 
             //calc orbit velocity
-            if(_mass != null && _semiMajoralAxis != null)
+            if(_flagM && _flagSMA)
             {
                 _orbitVelocity = (float)Math.Sqrt((double)(_mass * _universe.GravitationalConstant * (2.0f / _currentOrbitRadius - 1.0f / _semiMajoralAxis)));
             }

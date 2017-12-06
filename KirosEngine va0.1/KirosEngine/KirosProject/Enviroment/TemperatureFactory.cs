@@ -10,15 +10,15 @@ namespace KirosProject.Enviroment
     /// <summary>
     /// Manages the creation of temperature measurement units, the creation of Temperature objects, and the conversion between units.
     /// </summary>
-    class TemperatureFactory
+    public class TemperatureFactory
     {
         protected List<TemperatureUnit> _unitList;
-        protected TemperatureFactory _instance; //shouldn't be a need for more than one
+        protected static TemperatureFactory _instance; //shouldn't be a need for more than one
 
         /// <summary>
         /// Public accessor for the Singleton
         /// </summary>
-        public TemperatureFactory Instance
+        public static TemperatureFactory Instance
         {
             get
             {
@@ -91,6 +91,23 @@ namespace KirosProject.Enviroment
             _unitList.Add(new TemperatureUnit(name, cf));
             return true;
         }
+
+        /// <summary>
+        /// Get a temperature unit by name
+        /// </summary>
+        /// <param name="name">The name of the temperature unit to get</param>
+        /// <returns>A nullable TemperatureUnit if successful, Null if not successful</returns>
+        public TemperatureUnit? getUnit(string name)
+        {
+            TemperatureUnit? result = null;
+
+            Predicate<TemperatureUnit> findName =
+                r => r.Name.Equals(name);
+            //TODO: testing for checking the result when no match is found.
+            result = _unitList.Find(findName);  //O(n)
+
+            return result;
+        }
     }
 
     /// <summary>
@@ -99,7 +116,7 @@ namespace KirosProject.Enviroment
     public struct TemperatureUnit
     {
         private string _name;
-        private float _conversionFactor;
+        private float _conversionFactor; //Kelvin is the default thus for Kelvin this will be 0
 
         public TemperatureUnit(string name, float cf)
         {
