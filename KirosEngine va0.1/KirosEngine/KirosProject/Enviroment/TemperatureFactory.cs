@@ -14,6 +14,7 @@ namespace KirosProject.Enviroment
     {
         protected List<TemperatureUnit> _unitList;
         protected static TemperatureFactory _instance; //shouldn't be a need for more than one
+        protected bool _initalized;
 
         /// <summary>
         /// Public accessor for the Singleton
@@ -37,6 +38,7 @@ namespace KirosProject.Enviroment
         protected TemperatureFactory()
         {
             _unitList = new List<TemperatureUnit>();//O(1)
+            _initalized = false;
         }
 
         /// <summary>
@@ -46,6 +48,13 @@ namespace KirosProject.Enviroment
         /// <returns>True if successfully executed, false if an error occurs.</returns>
         public bool init(string fileName)
         {
+            if(_initalized)
+            {
+                throw new ObjectAlreadyInitalizedException();
+                return false;
+            }
+            
+            _initalized = true;
             return true;
         }
 

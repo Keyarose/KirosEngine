@@ -39,6 +39,17 @@ namespace KirosProject
         }
         
         /// <summary>
+        /// Public accessor for the component's bounding
+        /// <summary>
+        public Pair<Vector3> Bounding
+        {
+            get
+            {
+                return new Pair<Vector3>(_bounding1, _bounding2);
+            }
+        }
+        
+        /// <summary>
         /// Public accessor for the component's durability
         /// </summary>
         public float Durability
@@ -110,6 +121,7 @@ namespace KirosProject
         }
     }
     
+    //needs expansion
     public enum ComponentType
     {
         Wall,
