@@ -8,11 +8,10 @@ namespace KirosUnitTest.KirosProject
     class EnviromentUnitTest
     {
         [TestMethod]
-        public void TempFactoryTests
+        public void TempFactoryTests()
         {
             TemperatureFactory fact1 = TemperatureFactory.Instance;
-            
-            assert( fact1.init(""));
+            Assert.IsTrue( fact1.init(""), "Temperature Factory failed to initialize from string.");
         }
     }
 }

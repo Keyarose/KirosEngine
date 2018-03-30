@@ -8,4 +8,13 @@ namespace KirosPhysics
     public class Core
     {
     }
+
+    [Flags]
+    public enum ModuleFlags
+    {
+        Thermal = 1,
+        Gravity = 2,
+        Fluid = 4,
+        Ragdoll = 8
+    }
 }

@@ -36,6 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -56,6 +58,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="KirosEngine\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KirosChemistry\KirosChemistry.csproj">
+      <Project>{3c717b0b-145b-4a10-b56d-11d3fdfd2a00}</Project>
+      <Name>KirosChemistry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KirosEditor\KirosEditor.csproj">
+      <Project>{88409d38-1f87-43a9-a5d3-cd6f6f21da4e}</Project>
+      <Name>KirosEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KirosEngine\KirosEngine.csproj">
+      <Project>{db389941-a0b8-4a49-ba27-e46058746061}</Project>
+      <Name>KirosEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KirosEngine\KirosProject\KirosProject.csproj">
+      <Project>{51b0c6cd-de04-42b0-9165-4c2b94727b99}</Project>
+      <Name>KirosProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KirosPhysics\KirosPhysics.csproj">
+      <Project>{28b90ff6-c46a-43eb-afe2-117b8dcb1032}</Project>
+      <Name>KirosPhysics</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
